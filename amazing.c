@@ -19,17 +19,44 @@
  */
 /* ========================================================================== */
 
+
+//PSEUDOCODE
 /*
-We will mark the path that each avatar has traveled (update visited in AvataerInfo). If a location is twice visited, we will block it off (dead end) 
+Create maze based on input
+Randomly put in N avatars into the maze
+Initialize 2D array of maze size for each Avatar
+Find meeting location based on average x and y coordinates of starting location
+while(!sameLocation())
+{
+    Traverse(); //use int and directionsTried to optimize run time
+    Avatar->Location->AvatarInfo->int++; //block of dead ends (int = 2)
+    if(!direction)
+        add direction to AvatarInfo->directionsTried
+}
+
+int sameLocation()
+{
+    for(int i = 0; i < AvatarCount; i++)
+    {
+        if(Avatar->location != (Avatar+1)->Location)
+            return 0;
+    }
+    return 1;
+}
 */
 
+
+
+
+/*
+* We will mark the path that each avatar has traveled (update visited in AvataerInfo). If a location is twice visited, we will block it off (dead end) 
+*/
 
 // we will use a 2d array of size DIFFICULTY of Avatar Information for each Avatar
 typedef struct AvatarInfo {
     int visited; // stores the number of times a location has been visited
     List *directionsTried; // stores the directions already attempted but failed because of a wall
 } AvatarInformation;
-
 
 // Basic pseudocode for our traversal: Find target location based on average location of Avatars.
 // We then find the Manhattan Distance between each avatar and the location, which is the sum of the ABS of the x distance and y distance to location.
