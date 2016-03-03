@@ -23,6 +23,7 @@
 #include <netinet/in.h>			//net functionality
 #include <string.h>			//string functionality
 #include <arpa/inet.h>			//net functionality
+#include <pthread.h>			//Thread functionality
 
 // ---------------- Local includes  e.g., "file.h"
 #include "amazing.h"
@@ -34,16 +35,18 @@
 // ---------------- Structures/Types
 
 // ---------------- Private variables
+int avatar_id;
 
 // ---------------- Private prototypes
 
 // ---------------- Public functions
 
 
-/*void* newAvatar(int mazePort, int mazeWidth, int mazeHeight, int avatarId)
+void* newAvatar(void *ptr)
 {
-
-}*/
+	printf("Creating avatar %d\n", avatar_id);
+	return NULL;
+}
 
 void AMStartup(int nAvatars, int Difficulty, char *hostIP)
 {
@@ -68,28 +71,42 @@ void AMStartup(int nAvatars, int Difficulty, char *hostIP)
      	}
 
 	AM_Message *AM_INIT_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
-	AM_INIT_msg->type = AM_INIT;
-	AM_INIT_msg->init.nAvatars = nAvatars;
-	AM_INIT_msg->init.Difficulty = Difficulty;
+	AM_INIT_msg->type = htonl(AM_INIT);
+	AM_INIT_msg->init.nAvatars = htonl(nAvatars);
+	AM_INIT_msg->init.Difficulty = htonl(Difficulty);
 
 	send(sockfd, AM_INIT_msg, sizeof(AM_Message), 0);
 
 	AM_Message *AM_INIT_resp = (AM_Message *) calloc(1, sizeof(AM_Message));
 	recv(sockfd, AM_INIT_resp, sizeof(AM_Message), 0);
-	printf("%u\n", ntohl((uint32_t)AM_INIT_resp->type));
+	if (ntohl(AM_INIT_resp->type) != AM_INIT_OK) {
+		printf("Initialization failed with type %u\n", ntohl(AM_INIT_resp->type));
+		return;
+	}
+	if (ntohl(AM_INIT_resp->type) == AM_INIT_OK) {
+		printf("Message type is %u\n", ntohl(AM_INIT_resp->type));
+		printf("MazePort is %u\n", ntohl(AM_INIT_resp->init_ok.MazePort));
+		printf("Maze width is %u\n", ntohl(AM_INIT_resp->init_ok.MazeWidth));
+		printf("Maze height is %u\n", ntohl(AM_INIT_resp->init_ok.MazeHeight));
 
-	//if(AM_init_failed)
-		//exit with error
-	//if(AM_INIT_OK) {
-		//int mazePort = mazePort;
-		//int mazeWidth = mazeWidth;
-		//int mazeHeight = mazeHeight;
-	//}
-	//while(avatarId < nAvatars) {
-	//	newAvatar(mazePort, mazeWidth, mazeHeight, avatarId);
-	//	avatarId++;
-	//}
+	}
+	uint32_t mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
+	uint32_t mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
+	uint32_t mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
 
+	avatar_id = 0;
+	while(avatar_id < nAvatars) {
+		pthread_t t1;
+		int iret1 = pthread_create(&t1, NULL, newAvatar, NULL);
+		if(iret1) {
+			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
+			return;
+		}
+		for(int i = 0; i < 1500000; i++) {
+			;
+		}
+		avatar_id++;
+	}
 }
 
 
