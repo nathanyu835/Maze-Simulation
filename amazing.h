@@ -60,6 +60,24 @@
 #define AM_INIT_BAD_DIFFICULTY   (0x00000002 | AM_INIT_ERROR_MASK)
 
 // ---------------- Structures/Types
+
+
+typedef struct MazeNode
+{
+    int *visited; // stores the number of times a location has been visited, index of visited represents the avatar
+    //Since 1 is declared here, remember to use: ptr = malloc(sizeof(struct MazeNode) + (n-1));
+    int up, right, left, down; // keeps track of invalid directions
+} MazeNode;
+
+/*
+typedef struct Maze
+{
+    MazeNode **data; // stores a 2D array of MazeNodes
+} Maze;
+
+Maze *Amazing;
+*/
+
 /* XY-coordinate position */
 typedef struct XYPos
 {

@@ -18,6 +18,56 @@
  *
  */
 /* ========================================================================== */
+// ---------------- Open Issues
+
+// ---------------- System includes e.g., <stdio.h>
+#include <stdlib.h>
+#include <stdio.h> 
+#include <errno.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
+
+// ---------------- Local includes  e.g., "file.h"
+#include "amazing.h"
+
+// ---------------- Constant definitions
+
+// ---------------- Macro definitions
+
+// ---------------- Structures/Types
+
+// ---------------- Private variables
+int nAvatars, difficulty;
+char *hostname;
+MazeNode **Amazing;
+
+
+// ---------------- Private prototypes
+//void Traverse(Avatar *curr);
+void initializeMaze(int height, int width, int nAvatars);
+
+/* ========================================================================== */
+
+int main(int argc, char *argv[])
+{
+    // check command line arguments
+    if (argc != 4)
+    {
+        printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
+        exit(1);
+    }
+
+    hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
+    strcpy(hostname, argv[3]);
+    nAvatars = atoi(argv[1]);
+    difficulty = atoi(argv[2]);
+    int height = difficulty;
+    int width = difficulty;
+
+    initializeMaze(height, width, nAvatars);
+}
 
 
 //PSEUDOCODE
@@ -52,15 +102,32 @@ int sameLocation()
 * We will mark the path that each avatar has traveled (update visited in AvataerInfo). If a location is twice visited, we will block it off (dead end) 
 */
 
-// we will use a 2d array of size DIFFICULTY of Avatar Information for each Avatar
-typedef struct AvatarInfo {
-    int visited; // stores the number of times a location has been visited
-    List *directionsTried; // stores the directions already attempted but failed because of a wall
-} AvatarInformation;
-
 // Basic pseudocode for our traversal: Find target location based on average location of Avatars.
 // We then find the Manhattan Distance between each avatar and the location, which is the sum of the ABS of the x distance and y distance to location.
 
+void initializeMaze(int height, int width, int nAvatars)
+{
+    MazeNode *temp = (MazeNode*)calloc(width * height, sizeof(MazeNode));
+    Amazing = (MazeNode**)calloc(width, sizeof(MazeNode*));
+    for (int i = 0; i < width; i++)
+        Amazing[i] = temp + i*height;
+    for(int i = 0; i < width; i++)
+        for(int j = 0; j < height; j++)
+        {
+            printf("index is %d,%d\n", i,j);
+            Amazing[i][j].visited = malloc(sizeof(struct MazeNode) + (nAvatars));
+            Amazing[i][j].up = 0;
+            Amazing[i][j].right = 0;
+            Amazing[i][j].down = 0;
+            Amazing[i][j].left = 0;
+            printf("up is %d\n", Amazing[i][j].up);
+        }
+
+    Amazing[0][1].visited[0]++;   
+    printf("visited is %d\n", Amazing[0][1].visited[0]); 
+}
+
+/*
 void Traverse()
 {
     Point src, dst; // Source and destination coordinates
@@ -80,4 +147,4 @@ void Traverse()
                 Follow the right-hand/left-hand rule; // The opposite of the selected side of the line
         }
     }
-}
+}*/
