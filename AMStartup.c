@@ -17,6 +17,7 @@
 
 // ---------------- System includes e.g., <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>			//sleep functionality
 #include <stdio.h>			//I/O functionality
 #include <sys/types.h>			//Additional types
 #include <sys/socket.h>			//socket functionality
@@ -35,23 +36,62 @@
 // ---------------- Structures/Types
 
 // ---------------- Private variables
-int avatar_id;
+char *hostIP;
+int mazePort;
+int mazeWidth;
+int mazeHeight;
 
 // ---------------- Private prototypes
 
 // ---------------- Public functions
 
 
-void* newAvatar(void *ptr)
+void* newAvatar(void *avatar_id)
 {
-	printf("Creating avatar %d\n", avatar_id);
+	int AvatarId = *((int *) avatar_id);
+	printf("Creating avatar %d\n", AvatarId);
+
+	//create a new socket for this avatar
+	int sockfd;
+	struct sockaddr_in servaddr;
+
+	if ((sockfd = socket (AF_INET, SOCK_STREAM, 0)) <0) {
+        	perror("Problem in creating the socket");
+        	exit(2);
+    	}
+
+    	//Setup socket
+    	memset(&servaddr, 0, sizeof(servaddr));
+    	servaddr.sin_family = AF_INET;
+     	servaddr.sin_addr.s_addr= inet_addr(hostIP);
+     	servaddr.sin_port =  htons(mazePort); //convert to network order
+
+     	//Connection of the client to the socket 
+     	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr))<0) {
+        	perror("Problem in connecting to the server");
+        	exit(3);
+     	}
+
+
+	AM_Message *ready_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
+	ready_msg->type = htonl(AM_AVATAR_READY);
+	ready_msg->avatar_ready.AvatarId = htonl(AvatarId);
+	send(sockfd, ready_msg, sizeof(AM_Message), 0);
+
+	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
+	while(1 == 1) {
+		recv(sockfd, response, sizeof(AM_Message), 0);
+		printf("%u\n", ntohl(response->type));
+		sleep(1);
+	}
 	return NULL;
 }
 
-void AMStartup(int nAvatars, int Difficulty, char *hostIP)
+void AMStartup(int nAvatars, int Difficulty)
 {
 	int sockfd;
 	struct sockaddr_in servaddr;
+
 	//create socket for startup
 	if ((sockfd = socket (AF_INET, SOCK_STREAM, 0)) <0) {
         	perror("Problem in creating the socket");
@@ -90,28 +130,32 @@ void AMStartup(int nAvatars, int Difficulty, char *hostIP)
 		printf("Maze height is %u\n", ntohl(AM_INIT_resp->init_ok.MazeHeight));
 
 	}
-	uint32_t mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
-	uint32_t mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
-	uint32_t mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
+	mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
+	mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
+	mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
 
-	avatar_id = 0;
-	while(avatar_id < nAvatars) {
-		pthread_t t1;
-		int iret1 = pthread_create(&t1, NULL, newAvatar, NULL);
+	int curr_id = 0;
+	pthread_t avatars[nAvatars];
+	while(curr_id < nAvatars) {
+		int iret1 = pthread_create(&(avatars[curr_id]), NULL, newAvatar, &curr_id);
 		if(iret1) {
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
 		}
-		for(int i = 0; i < 1500000; i++) {
-			;
-		}
-		avatar_id++;
+		sleep(1);
+		curr_id++;
 	}
+	AM_Message *message = (AM_Message *) calloc(1, sizeof(AM_Message));
+	while (1 == 1) {
+		sleep(1);
+	}
+
 }
 
 
 int main(int argc, char **argv)
 {
-	AMStartup(atoi(argv[1]), atoi(argv[2]), argv[3]);
+	hostIP = argv[3];
+	AMStartup(atoi(argv[1]), atoi(argv[2]));
 	return 0;
 }
