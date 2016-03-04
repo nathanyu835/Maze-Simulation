@@ -31,6 +31,7 @@
 // ---------------- Local includes  e.g., "file.h"
 #include "amazing.h"
 
+
 // ---------------- Constant definitions
 
 // ---------------- Macro definitions
@@ -119,14 +120,11 @@ void* newAvatar(void *avatar_id)
 		//Wait for message from the server
 		recv(sockfd, response, sizeof(AM_Message), 0);
 		//Check if it is this avatar's turn to move, if so send move request to server
-		if(ntohl(response->type) == AM_AVATAR_TURN) {
+		int respType = ntohl(response->type);
+		if(respType == AM_AVATAR_TURN) {
 			if(ntohl(response->avatar_turn.TurnId) == AvatarId) {
-				int dir = rand() % 4;
+				int dir = getDirection();
 				usleep(10000);
-				if (ntohl(response->avatar_turn.Pos[AvatarId].x) == rendezvous->x && 
-					ntohl(response->avatar_turn.Pos[AvatarId].y) == rendezvous->y) {
-					dir = M_NULL_MOVE;
-				}
 				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
 					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
@@ -138,14 +136,14 @@ void* newAvatar(void *avatar_id)
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
-			if(ntohl(response->type) == AM_MAZE_SOLVED &&  AvatarId == 0) {
+			if(respType == AM_MAZE_SOLVED &&  AvatarId == 0) {
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
 				printf("Maze completed, avatar %d exiting\n", AvatarId);
 				terminated = response;
 				break;
-			}  else if (ntohl(response->type) == AM_AVATAR_OUT_OF_TURN) {
-
-			}
+			}  else if (respType == AM_AVATAR_OUT_OF_TURN) {
+				usleep(10000); //wait then continue
+			} else if ()
 		}
 
 	}
