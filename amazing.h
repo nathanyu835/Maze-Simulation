@@ -69,8 +69,6 @@ typedef struct MazeNode
     int north, east, south, west; // keeps track of invalid directions
 } MazeNode;
 
-MazeNode **Amazing;
-
 /*
 typedef struct Maze
 {
@@ -86,8 +84,6 @@ typedef struct XYPos
     uint32_t x;
     uint32_t y;
 } XYPos;
-
-XYPos *rendezvous;
 
 /* Maze avatar */
 typedef struct Avatar
@@ -167,6 +163,12 @@ typedef struct AM_Message
 } AM_Message;
 
 // ---------------- Public Variables
+
+XYPos *rendezvous;
+MazeNode **Amazing;
+char *hostIP;
+int nAvatars;
+int mazePort;
 
 // ---------------- Prototypes/Macros
 void Traverse();
