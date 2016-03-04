@@ -76,9 +76,7 @@ typedef struct Maze
 {
     MazeNode **data; // stores a 2D array of MazeNodes
 } Maze;
-
-Maze *Amazing;
-*/
+*/ 
 
 /* XY-coordinate position */
 typedef struct XYPos
@@ -86,6 +84,8 @@ typedef struct XYPos
     uint32_t x;
     uint32_t y;
 } XYPos;
+
+XYPos *target;
 
 /* Maze avatar */
 typedef struct Avatar

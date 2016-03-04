@@ -41,6 +41,7 @@ int mazePort;
 int mazeWidth;
 int mazeHeight;
 int nAvatars;
+AM_Message *terminated;
 
 // ---------------- Private prototypes
 
@@ -87,6 +88,30 @@ void* newAvatar(void *avatar_id)
 
 	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
+
+	//wait for the first turn so that we can set the target location
+	recv(sockfd, response, sizeof(AM_Message), 0);
+	if(ntohl(response->type) == AM_AVATAR_TURN) {
+		if (target->x == -1 && AvatarId == ntohl(response->avatar_turn.TurnId)) {
+			int xSum = 0;
+			int ySum = 0;
+			for(int i = 0; i < nAvatars; i++) {
+				xSum += ntohl(response->avatar_turn.Pos[i].x);
+				ySum += ntohl(response->avatar_turn.Pos[i].y);
+			}
+			target->x = xSum/nAvatars;
+			target->y = ySum/nAvatars;
+			printf("The target position is (%d, %d)\n", target->x, target->y);
+		}
+		int dir = rand() % 4;
+		printf("After the move, the new positions are:\n");
+		for(int i = 0; i < nAvatars; i++) {
+			printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+		}
+		printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
+		move->avatar_move.Direction = htonl(dir);
+		send(sockfd, move, sizeof(AM_Message), 0);
+	}
 	while(1 == 1) {
 		//Wait for message from the server
 		recv(sockfd, response, sizeof(AM_Message), 0);
@@ -94,6 +119,7 @@ void* newAvatar(void *avatar_id)
 		if(ntohl(response->type) == AM_AVATAR_TURN) {
 			if(ntohl(response->avatar_turn.TurnId) == AvatarId) {
 				int dir = rand() % 4;
+				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
 					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
 				}
@@ -101,8 +127,20 @@ void* newAvatar(void *avatar_id)
 				move->avatar_move.Direction = htonl(dir);
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
+			//sleep(1);
+		} else {
+			sleep(1);
+			if(ntohl(response->type) == AM_MAZE_SOLVED &&  AvatarId == 0) {
+				sleep(1);
+				printf("Maze completed, avatar %d exiting\n", AvatarId);
+				terminated = response;
+				break;
+			} else {
+				printf("And the other avatars, with message type: %d\n", ntohl(response->type));
+				break;
+			}
 		}
-		sleep(1);
+
 	}
 	return NULL;
 }
@@ -168,12 +206,11 @@ void AMStartup(int Difficulty)
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
 		}
-		sleep(1);
+		for(int i = 0; i<1000000; i++);
 		curr_id++;
 	}
 
-	AM_Message *message = (AM_Message *) calloc(1, sizeof(AM_Message));
-	while (1 == 1) {
+	while (terminated == NULL) {
 		sleep(1);
 	}
 
@@ -184,6 +221,10 @@ int main(int argc, char **argv)
 {
 	hostIP = argv[3];
 	nAvatars = atoi(argv[1]);
+	target = (XYPos *) calloc (1, sizeof(XYPos));
+	target->x = -1;
+	target->y = -1;
+	terminated = NULL;
 	AMStartup(atoi(argv[2]));
 	return 0;
 }
