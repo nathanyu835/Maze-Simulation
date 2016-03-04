@@ -41,12 +41,12 @@
 // ---------------- Private variables
 int nAvatars, difficulty;
 char *hostname;
-MazeNode **Amazing;
-
+XYPos *rendezvous;
 
 // ---------------- Private prototypes
 //void Traverse(Avatar *curr);
 void initializeMaze(int height, int width, int nAvatars);
+void createPerimeter(int height, int width);
 
 /* ========================================================================== */
 
@@ -67,15 +67,25 @@ int main(int argc, char *argv[])
     int width = difficulty;
 
     initializeMaze(height, width, nAvatars);
+
+    // CODE FOR TESTING MAZE INITIALIZATION
+    for(int i = 0; i < width; i++)
+        for(int j = 0; j < height; j++)
+        {
+            printf("index is %d,%d: ", i,j); 
+            printf("north is: %d, " , Amazing[i][j].north);
+            printf("west is: %d, " , Amazing[i][j].west);
+            printf("south is: %d, " , Amazing[i][j].south);
+            printf("east is: %d\n" , Amazing[i][j].east);
+        }
+    
+
+
 }
 
 
 //PSEUDOCODE
 /*
-Create maze based on input
-Randomly put in N avatars into the maze
-Initialize 2D array of maze size for each Avatar
-Find meeting location based on average x and y coordinates of starting location
 while(!sameLocation())
 {
     Traverse(); //use int and directionsTried to optimize run time
@@ -98,10 +108,6 @@ int sameLocation()
 
 
 
-/*
-* We will mark the path that each avatar has traveled (update visited in AvataerInfo). If a location is twice visited, we will block it off (dead end) 
-*/
-
 // Basic pseudocode for our traversal: Find target location based on average location of Avatars.
 // We then find the Manhattan Distance between each avatar and the location, which is the sum of the ABS of the x distance and y distance to location.
 
@@ -114,17 +120,43 @@ void initializeMaze(int height, int width, int nAvatars)
     for(int i = 0; i < width; i++)
         for(int j = 0; j < height; j++)
         {
-            printf("index is %d,%d\n", i,j);
             Amazing[i][j].visited = malloc(sizeof(struct MazeNode) + (nAvatars));
-            Amazing[i][j].up = 0;
-            Amazing[i][j].right = 0;
-            Amazing[i][j].down = 0;
-            Amazing[i][j].left = 0;
-            printf("up is %d\n", Amazing[i][j].up);
+            Amazing[i][j].north = 0;
+            Amazing[i][j].east = 0;
+            Amazing[i][j].south = 0;
+            Amazing[i][j].west = 0;
         }
 
-    Amazing[0][1].visited[0]++;   
-    printf("visited is %d\n", Amazing[0][1].visited[0]); 
+    createPerimeter(height, width);
+}
+
+void createPerimeter(int height, int width)
+{
+    for(int i = 0; i < height; i++)
+    {
+        Amazing[i][0].north = 1;
+        Amazing[i][width-1].south = 1;
+    }
+
+    for(int j = 0; j < width; j++)
+    {
+        Amazing[0][j].west = 1;
+        Amazing[height-1][j].east = 1;
+    }
+}
+
+void getRendezvous(Avatar *avatar)
+{
+    int xSum = 0, ySum = 0;
+
+    for(int i = 0; i < nAvatars; i++)
+    {
+        xSum += avatar->pos.x;
+        ySum += avatar->pos.y;
+    }
+
+    rendezvous->x = xSum/nAvatars;
+    rendezvous->y = ySum/nAvatars;
 }
 
 /*
