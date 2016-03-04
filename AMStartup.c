@@ -13,6 +13,8 @@
  */
 /* ========================================================================== */
 
+#define _DEFAULT_SOURCE			//For usleep
+
 // ---------------- Open Issues
 
 // ---------------- System includes e.g., <stdio.h>
@@ -92,21 +94,22 @@ void* newAvatar(void *avatar_id)
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
-		if (target->x == -1 && AvatarId == ntohl(response->avatar_turn.TurnId)) {
+		if (rendezvous->x == -1 && AvatarId == ntohl(response->avatar_turn.TurnId)) {
 			int xSum = 0;
 			int ySum = 0;
 			for(int i = 0; i < nAvatars; i++) {
 				xSum += ntohl(response->avatar_turn.Pos[i].x);
 				ySum += ntohl(response->avatar_turn.Pos[i].y);
 			}
-			target->x = xSum/nAvatars;
-			target->y = ySum/nAvatars;
-			printf("The target position is (%d, %d)\n", target->x, target->y);
+			rendezvous->x = xSum/nAvatars;
+			rendezvous->y = ySum/nAvatars;
+			printf("The target position is (%d, %d)\n", rendezvous->x, rendezvous->y);
 		}
 		int dir = rand() % 4;
 		printf("After the move, the new positions are:\n");
 		for(int i = 0; i < nAvatars; i++) {
-			printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+			printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
+								ntohl(response->avatar_turn.Pos[i].y));
 		}
 		printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
 		move->avatar_move.Direction = htonl(dir);
@@ -119,25 +122,29 @@ void* newAvatar(void *avatar_id)
 		if(ntohl(response->type) == AM_AVATAR_TURN) {
 			if(ntohl(response->avatar_turn.TurnId) == AvatarId) {
 				int dir = rand() % 4;
+				usleep(10000);
+				if (ntohl(response->avatar_turn.Pos[AvatarId].x) == rendezvous->x && 
+					ntohl(response->avatar_turn.Pos[AvatarId].y) == rendezvous->y) {
+					dir = M_NULL_MOVE;
+				}
 				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
-					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
+										ntohl(response->avatar_turn.Pos[i].y));
 				}
 				printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
 				move->avatar_move.Direction = htonl(dir);
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
-			//sleep(1);
+			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
-			sleep(1);
 			if(ntohl(response->type) == AM_MAZE_SOLVED &&  AvatarId == 0) {
-				sleep(1);
+				sleep(1); // give a chance for the other avatars to finish any remaining print statements
 				printf("Maze completed, avatar %d exiting\n", AvatarId);
 				terminated = response;
 				break;
-			} else {
-				printf("And the other avatars, with message type: %d\n", ntohl(response->type));
-				break;
+			}  else if (ntohl(response->type) == AM_AVATAR_OUT_OF_TURN) {
+
 			}
 		}
 
@@ -214,6 +221,8 @@ void AMStartup(int Difficulty)
 		sleep(1);
 	}
 
+	//
+
 }
 
 
@@ -221,9 +230,9 @@ int main(int argc, char **argv)
 {
 	hostIP = argv[3];
 	nAvatars = atoi(argv[1]);
-	target = (XYPos *) calloc (1, sizeof(XYPos));
-	target->x = -1;
-	target->y = -1;
+	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
+	rendezvous->x = -1;
+	rendezvous->y = -1;
 	terminated = NULL;
 	AMStartup(atoi(argv[2]));
 	return 0;
