@@ -72,17 +72,33 @@ void* newAvatar(void *avatar_id)
         	exit(3);
      	}
 
-
+     	//Allocate send and free the ready message to the server
 	AM_Message *ready_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
 	ready_msg->type = htonl(AM_AVATAR_READY);
 	ready_msg->avatar_ready.AvatarId = htonl(AvatarId);
 	send(sockfd, ready_msg, sizeof(AM_Message), 0);
+	free(ready_msg);
 
+	//Allocate memory for move messages to the server, with constant type and id
+	AM_Message *move = (AM_Message *) calloc(1, sizeof(AM_Message));
+	move->type = htonl(AM_AVATAR_MOVE);
+	move->avatar_move.AvatarId = htonl(AvatarId);
+
+	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
 	while(1 == 1) {
+		//Wait for message from the server
 		recv(sockfd, response, sizeof(AM_Message), 0);
-		printf("%u\n", ntohl(response->type));
-		sleep(1);
+		printf("%d\n", ntohl(response->type));
+		//Check if it is this avatar's turn to move, if so send move request to server
+		if(ntohl(response->type) == AM_AVATAR_TURN) {
+			if(ntohl(response->avatar_move.AvatarId) == AvatarId) {
+				printf("It is Avatar %d's turn", AvatarId);
+				move->avatar_move.Direction = htonl(M_WEST);
+				send(sockfd, move, sizeof(AM_Message), 0);
+			}
+		}
+		//sleep(1);
 	}
 	return NULL;
 }
@@ -94,7 +110,7 @@ void AMStartup(int nAvatars, int Difficulty)
 
 	//create socket for startup
 	if ((sockfd = socket (AF_INET, SOCK_STREAM, 0)) <0) {
-        	perror("Problem in creating the socket");
+        	perror("Problem in creating the socket\n");
         	exit(2);
     	}
 
@@ -106,10 +122,11 @@ void AMStartup(int nAvatars, int Difficulty)
 
      	//Connection of the client to the socket 
      	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr))<0) {
-        	perror("Problem in connecting to the server");
+        	perror("Problem in connecting to the server\n");
         	exit(3);
      	}
 
+     	//Send init message to the server
 	AM_Message *AM_INIT_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
 	AM_INIT_msg->type = htonl(AM_INIT);
 	AM_INIT_msg->init.nAvatars = htonl(nAvatars);
@@ -117,6 +134,7 @@ void AMStartup(int nAvatars, int Difficulty)
 
 	send(sockfd, AM_INIT_msg, sizeof(AM_Message), 0);
 
+	//Get init response from the server
 	AM_Message *AM_INIT_resp = (AM_Message *) calloc(1, sizeof(AM_Message));
 	recv(sockfd, AM_INIT_resp, sizeof(AM_Message), 0);
 	if (ntohl(AM_INIT_resp->type) != AM_INIT_OK) {
@@ -130,9 +148,13 @@ void AMStartup(int nAvatars, int Difficulty)
 		printf("Maze height is %u\n", ntohl(AM_INIT_resp->init_ok.MazeHeight));
 
 	}
+	//Set maze variables
 	mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
 	mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
 	mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
+
+	//Create maze
+	//mazeNode maze[mazeWidth][mazeHeight] = mazeInit() 
 
 	int curr_id = 0;
 	pthread_t avatars[nAvatars];
@@ -145,6 +167,7 @@ void AMStartup(int nAvatars, int Difficulty)
 		sleep(1);
 		curr_id++;
 	}
+
 	AM_Message *message = (AM_Message *) calloc(1, sizeof(AM_Message));
 	while (1 == 1) {
 		sleep(1);
