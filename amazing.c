@@ -44,12 +44,12 @@ char *hostname;
 XYPos *rendezvous;
 
 // ---------------- Private prototypes
-//void Traverse(Avatar *curr);
+/*void Traverse(Avatar *curr);
 void initializeMaze(int height, int width, int nAvatars);
 void createPerimeter(int height, int width);
 void getRendezvous(Avatar *avatar);
 int getManhattan(XYPos *start, XYPos *end);
-int getDirection(XYPos *start, XYPos *end);
+int getDirection(XYPos *start, XYPos *end);*/
 
 /* ========================================================================== */
 

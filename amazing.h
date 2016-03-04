@@ -66,15 +66,19 @@ typedef struct MazeNode
 {
     int *visited; // stores the number of times a location has been visited, index of visited represents the avatar
     //Since 1 is declared here, remember to use: ptr = malloc(sizeof(struct MazeNode) + (n-1));
-    int up, right, left, down; // keeps track of invalid directions
+    int north, east, south, west; // keeps track of invalid directions
 } MazeNode;
+
+MazeNode **Amazing;
 
 /*
 typedef struct Maze
 {
     MazeNode **data; // stores a 2D array of MazeNodes
 } Maze;
-*/ 
+
+Maze *Amazing;
+*/
 
 /* XY-coordinate position */
 typedef struct XYPos
@@ -82,8 +86,6 @@ typedef struct XYPos
     uint32_t x;
     uint32_t y;
 } XYPos;
-
-XYPos *rendezvous;
 
 /* Maze avatar */
 typedef struct Avatar
@@ -164,6 +166,15 @@ typedef struct AM_Message
 // ---------------- Public Variables
 
 // ---------------- Prototypes/Macros
+void Traverse();
+void initializeMaze(int height, int width, int nAvatars);
+void createPerimeter(int height, int width);
+void getRendezvous(Avatar *avatar);
+int getManhattan(XYPos *start, XYPos *end);
+int getDirection(XYPos *start, XYPos *end);
+
+
+
 #define IS_AM_ERROR(code) ((code) & (AM_ERROR_MASK))
 
 #endif // AMAZING_H
