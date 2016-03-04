@@ -40,6 +40,7 @@ char *hostIP;
 int mazePort;
 int mazeWidth;
 int mazeHeight;
+int nAvatars;
 
 // ---------------- Private prototypes
 
@@ -89,21 +90,24 @@ void* newAvatar(void *avatar_id)
 	while(1 == 1) {
 		//Wait for message from the server
 		recv(sockfd, response, sizeof(AM_Message), 0);
-		printf("%d\n", ntohl(response->type));
 		//Check if it is this avatar's turn to move, if so send move request to server
 		if(ntohl(response->type) == AM_AVATAR_TURN) {
-			if(ntohl(response->avatar_move.AvatarId) == AvatarId) {
-				printf("It is Avatar %d's turn", AvatarId);
-				move->avatar_move.Direction = htonl(M_WEST);
+			if(ntohl(response->avatar_turn.TurnId) == AvatarId) {
+				int dir = rand() % 4;
+				for(int i = 0; i < nAvatars; i++) {
+					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+				}
+				printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
+				move->avatar_move.Direction = htonl(dir);
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
 		}
-		//sleep(1);
+		sleep(1);
 	}
 	return NULL;
 }
 
-void AMStartup(int nAvatars, int Difficulty)
+void AMStartup(int Difficulty)
 {
 	int sockfd;
 	struct sockaddr_in servaddr;
@@ -179,6 +183,7 @@ void AMStartup(int nAvatars, int Difficulty)
 int main(int argc, char **argv)
 {
 	hostIP = argv[3];
-	AMStartup(atoi(argv[1]), atoi(argv[2]));
+	nAvatars = atoi(argv[1]);
+	AMStartup(atoi(argv[2]));
 	return 0;
 }
