@@ -51,10 +51,14 @@ AM_Message *terminated;
 // ---------------- Public functions
 
 
-void* newAvatar(void *avatar_id)
+void* newAvatar(void *newAvatar)
 {
-	int AvatarId = *((int *) avatar_id);
-	printf("Creating avatar %d\n", AvatarId);
+	Avatar *avatar = (Avatar *) newAvatar;
+	XYPos *pos = (XYPos *) calloc(1, sizeof(XYPos));
+	pos->x = -1;
+	pos->y = -1;
+	avatar->pos = pos;
+	printf("Creating avatar %d\n", avatar->AvatarId);
 
 	//create a new socket for this avatar
 	int sockfd;
@@ -65,6 +69,7 @@ void* newAvatar(void *avatar_id)
         	exit(2);
     	}
 
+    	avatar->fd = sockfd;
     	//Setup socket
     	memset(&servaddr, 0, sizeof(servaddr));
     	servaddr.sin_family = AF_INET;
@@ -80,14 +85,14 @@ void* newAvatar(void *avatar_id)
      	//Allocate send and free the ready message to the server
 	AM_Message *ready_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
 	ready_msg->type = htonl(AM_AVATAR_READY);
-	ready_msg->avatar_ready.AvatarId = htonl(AvatarId);
+	ready_msg->avatar_ready.AvatarId = htonl(avatar->AvatarId);
 	send(sockfd, ready_msg, sizeof(AM_Message), 0);
 	free(ready_msg);
 
 	//Allocate memory for move messages to the server, with constant type and id
 	AM_Message *move = (AM_Message *) calloc(1, sizeof(AM_Message));
 	move->type = htonl(AM_AVATAR_MOVE);
-	move->avatar_move.AvatarId = htonl(AvatarId);
+	move->avatar_move.AvatarId = htonl(avatar->AvatarId);
 
 	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
@@ -95,7 +100,7 @@ void* newAvatar(void *avatar_id)
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
-		if (rendezvous->x == -1 && AvatarId == ntohl(response->avatar_turn.TurnId)) {
+		if (rendezvous->x == -1 && avatar->AvatarId == ntohl(response->avatar_turn.TurnId)) {
 			int xSum = 0;
 			int ySum = 0;
 			for(int i = 0; i < nAvatars; i++) {
@@ -106,13 +111,13 @@ void* newAvatar(void *avatar_id)
 			rendezvous->y = ySum/nAvatars;
 			printf("The target position is (%d, %d)\n", rendezvous->x, rendezvous->y);
 		}
-		int dir = rand() % 4;
+		int dir = chooseDir(avatar, rendezvous);
 		printf("After the move, the new positions are:\n");
 		for(int i = 0; i < nAvatars; i++) {
 			printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
 								ntohl(response->avatar_turn.Pos[i].y));
 		}
-		printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
+		printf("It is Avatar %d's turn, attempted move: %d\n", avatar->AvatarId, dir);
 		move->avatar_move.Direction = htonl(dir);
 		send(sockfd, move, sizeof(AM_Message), 0);
 	}
@@ -122,32 +127,49 @@ void* newAvatar(void *avatar_id)
 		//Check if it is this avatar's turn to move, if so send move request to server
 		int respType = ntohl(response->type);
 		if(respType == AM_AVATAR_TURN) {
-			if(ntohl(response->avatar_turn.TurnId) == AvatarId) {
-				int dir = getDirection();
-				usleep(10000);
+			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
+				//Update avatar position
+				avatar->pos->x = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+				avatar->pos->y = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
+				//Call algorithm to choose the next move
+				int dir = chooseDir(avatar, rendezvous);
 				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
 					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
 										ntohl(response->avatar_turn.Pos[i].y));
 				}
-				printf("It is Avatar %d's turn, attempted move: %d\n", AvatarId, dir);
+				printf("It is Avatar %d's turn, attempted move: %d towards (%d, %d)\n", avatar->AvatarId, dir, rendezvous->x, rendezvous->y);
+				usleep(10000); //sleep to allow time for print statments
 				move->avatar_move.Direction = htonl(dir);
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
-			if(respType == AM_MAZE_SOLVED &&  AvatarId == 0) {
+			if(respType == AM_MAZE_SOLVED && avatar->AvatarId == 0) {
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
-				printf("Maze completed, avatar %d exiting\n", AvatarId);
+				printf("Maze completed, avatar %d exiting\n", avatar->AvatarId);
 				terminated = response;
 				break;
 			}  else if (respType == AM_AVATAR_OUT_OF_TURN) {
 				usleep(10000); //wait then continue
-			} else if ()
+			}
 		}
 
 	}
 	return NULL;
+}
+
+int chooseDir(Avatar *avatar, XYPos *rendezvous) {
+	int dir = rand() % 4;
+	int ax = avatar->pos->x;
+	int ay = avatar->pos->y;
+	int rx = rendezvous->x;
+	int ry = rendezvous->y;
+	//printf("Comparing avatar (%d, %d) and target (%d, %d)\n", ax, ay, rx, ry);
+	if(ax == rx && ay == ry) {
+		return M_NULL_MOVE;
+	}
+	return dir;
 }
 
 void AMStartup(int Difficulty)
@@ -206,7 +228,9 @@ void AMStartup(int Difficulty)
 	int curr_id = 0;
 	pthread_t avatars[nAvatars];
 	while(curr_id < nAvatars) {
-		int iret1 = pthread_create(&(avatars[curr_id]), NULL, newAvatar, &curr_id);
+		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
+		nextAvatar->AvatarId = curr_id;
+		int iret1 = pthread_create(&(avatars[curr_id]), NULL, newAvatar, nextAvatar);
 		if(iret1) {
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
@@ -214,13 +238,9 @@ void AMStartup(int Difficulty)
 		for(int i = 0; i<1000000; i++);
 		curr_id++;
 	}
-
 	while (terminated == NULL) {
 		sleep(1);
 	}
-
-	//
-
 }
 
 

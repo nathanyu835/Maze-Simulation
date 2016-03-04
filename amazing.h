@@ -87,11 +87,14 @@ typedef struct XYPos
     uint32_t y;
 } XYPos;
 
+XYPos *rendezvous;
+
 /* Maze avatar */
 typedef struct Avatar
 {
     int fd;
-    XYPos pos;
+    int AvatarId;
+    XYPos *pos;
 } Avatar;
 
 /* AM Message description */
