@@ -66,10 +66,8 @@ typedef struct MazeNode
 {
     int *visited; // stores the number of times a location has been visited, index of visited represents the avatar
     //Since 1 is declared here, remember to use: ptr = malloc(sizeof(struct MazeNode) + (n-1));
-    int north, east, south, west; // keeps track of invalid directions
+    int up, right, left, down; // keeps track of invalid directions
 } MazeNode;
-
-MazeNode **Amazing;
 
 /*
 typedef struct Maze
@@ -85,7 +83,7 @@ typedef struct XYPos
     uint32_t y;
 } XYPos;
 
-XYPos *target;
+XYPos *rendezvous;
 
 /* Maze avatar */
 typedef struct Avatar
