@@ -141,9 +141,15 @@ void* newAvatar(void *newAvatar)
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
 				moveCount++;
 				//Update avatar position
-				avatar->pos->x = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
-
-				avatar->pos->y = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
+				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+				if (avatar->pos->x = newX && avatar->pos->y = newX) {
+					/***********************
+					ADD UPDATE WALL CODE
+					*********************/
+				}
+				avatar->pos->x = newX;
+				avatar->pos->y = newX;
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
