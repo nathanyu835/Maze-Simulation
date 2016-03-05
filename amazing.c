@@ -39,9 +39,6 @@
 // ---------------- Structures/Types
 
 // ---------------- Private variables
-int nAvatars, difficulty;
-char *hostname;
-XYPos *rendezvous;
 
 // ---------------- Private prototypes
 /*void Traverse(Avatar *curr);
@@ -52,7 +49,7 @@ int getManhattan(XYPos *start, XYPos *end);
 int getDirection(XYPos *start, XYPos *end);*/
 
 /* ========================================================================== */
-
+/*
 int main(int argc, char *argv[])
 {
     // check command line arguments
@@ -71,7 +68,7 @@ int main(int argc, char *argv[])
 
     initializeMaze(height, width, nAvatars);
 
-    // CODE FOR TESTING MAZE INITIALIZATION
+    //CODE FOR TESTING MAZE INITIALIZATION
     for(int i = 0; i < width; i++)
         for(int j = 0; j < height; j++)
         {
@@ -82,9 +79,7 @@ int main(int argc, char *argv[])
             printf("east is: %d\n" , Amazing[i][j].east);
         }
     
-
-
-}
+}*/
 
 //PSEUDOCODE
 /*
@@ -152,8 +147,8 @@ void getRendezvous(Avatar *avatar)
 
     for(int i = 0; i < nAvatars; i++)
     {
-        xSum += avatar->pos.x;
-        ySum += avatar->pos.y;
+        xSum += avatar->pos->x;
+        ySum += avatar->pos->y;
     }
 
     rendezvous->x = xSum/nAvatars;
@@ -171,7 +166,7 @@ int isProductive(XYPos *currPos)
     if(changeY > 0) //Avatar needs to move south to reach rendezvous
     {
         if(Amazing[currPos->x][currPos->y].south == 0)
-            return M_South;
+            return M_SOUTH;
     }
     else
     {
@@ -191,16 +186,16 @@ int isProductive(XYPos *currPos)
     return -1;
 }
 
-int Traverse()
+int Traverse(Avatar *avatar)
 {
     //XYPos *startingPoint;
-    XYPos *currPos;
+    //XYPos *currPos;
     //int bestMD = getManhattan(startingPoint, rendezvous); // It stores the closest MD we ever had to rendezvous
     //while(!(currPos->x == rendezvous->x && currPos->y == rendezvous->y))
     //{
         //if(∃ a productive path) // A productive path is the one that makes our MD to dst smaller
         //    Take the productive path;
-        int productive = isProductive(currPos);
+        int productive = isProductive(avatar->pos);
         if(productive != -1)
             return productive;
             //The function calling this method needs to attempt this move
@@ -210,10 +205,11 @@ int Traverse()
             //bestMD = getManhattan(currPos, rendezvous);
             //Imagine a line between cur and dst;
             //Take the first path in the left/right of the line; // The left/right selection affects the following hand rule
-            while(isProductive() == -1) //getManhattan(currPos, rendezvous) != bestMD || 
+            while(isProductive(avatar->pos) == -1) //getManhattan(currPos, rendezvous) != bestMD || 
             {
                 // The opposite of the selected side of the line (right hand rule)
                 //int face = getDirection(currPos, rendezvous);
+                /*
                 switch(face)
                 {
                     case M_EAST:
@@ -325,7 +321,9 @@ int Traverse()
                         break;
                     }
                 }
+                */
             }
+            return 0;
         }
     //}
 }
