@@ -160,25 +160,60 @@ void getRendezvous(Avatar *avatar)
     rendezvous->y = ySum/nAvatars;
 }
 
-/*
-void Traverse()
+//checks for a path that decreases the MD between currPos and renedezvous, prioritizing a decrease in abs(y) over a decrease in abs(x)
+//returns the direction of a potential productive move, -1 if one doesn't exist
+int isProductive(XYPos *currPos)
 {
-    XYPos *startingPoint;
-    XYPos *currPos;
-    int bestMD = getManhattan(startingPoint, rendezvous); // It stores the closest MD we ever had to rendezvous
-    while(!(currPos->x == rendezvous->x && currPos->y == rendezvous->y))
+    //int currMD = getManhattan(currPos, rendezvous);
+    int changeX = rendezvous->x - currPos->x;
+    int changeY = rendezvous->y - currPos->y;
+
+    if(changeY > 0) //Avatar needs to move south to reach rendezvous
     {
+        if(Amazing[currPos->x][currPos->y].south == 0)
+            return M_South;
+    }
+    else
+    {
+        if(Amazing[currPos->x][currPos->y].north == 0)
+            return M_NORTH;
+    }
+    if(changeX > 0) //Avatar needs to move east to reach rendezvous
+    {
+        if(Amazing[currPos->x][currPos->y].east == 0)
+            return M_EAST;    
+    }
+    else
+    {
+        if(Amazing[currPos->x][currPos->y].west == 0)
+            return M_WEST;
+    }
+    return -1;
+}
+
+int Traverse()
+{
+    //XYPos *startingPoint;
+    XYPos *currPos;
+    //int bestMD = getManhattan(startingPoint, rendezvous); // It stores the closest MD we ever had to rendezvous
+    //while(!(currPos->x == rendezvous->x && currPos->y == rendezvous->y))
+    //{
         //if(∃ a productive path) // A productive path is the one that makes our MD to dst smaller
         //    Take the productive path;
-        //else
+        int productive = isProductive(currPos);
+        if(productive != -1)
+            return productive;
+            //The function calling this method needs to attempt this move
+            //if it fails, update the walls and then call the function again until -1 is returned
+        else
         {
-            bestMD = getManhattan(currPos, rendezvous);
+            //bestMD = getManhattan(currPos, rendezvous);
             //Imagine a line between cur and dst;
             //Take the first path in the left/right of the line; // The left/right selection affects the following hand rule
-            while(getManhattan(currPos, rendezvous) != bestMD) //|| !∃ a productive path
+            while(isProductive() == -1) //getManhattan(currPos, rendezvous) != bestMD || 
             {
                 // The opposite of the selected side of the line (right hand rule)
-                int face = getDirection(currPos, rendezvous);
+                //int face = getDirection(currPos, rendezvous);
                 switch(face)
                 {
                     case M_EAST:
@@ -195,7 +230,7 @@ void Traverse()
                             //Move avatar to (currPos->x,currPos->y)
                             face = M_NORTH;
                         }
-                        else if (Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x][currPos->y - 1].east == 1)
+                        else if (Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x + 1][currPos->y].north == 1)
                         {
                             currPos->x = currPos->x + 1;
                             //Move avatar to (currPos->x,currPos->y)
@@ -213,7 +248,7 @@ void Traverse()
                             //Move avatar to (currPos->x,currPos->y)
                             face = M_SOUTH;
                         }
-                        else if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x - 1][currPos->y].north == 1)
+                        else if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y - 1].west== 1)
                         {
                             currPos->y = currPos->y - 1;
                             //Move avatar to (currPos->x,currPos->y)
@@ -292,126 +327,8 @@ void Traverse()
                 }
             }
         }
-    }
+    //}
 }
-*/
-
-void rightHand()
-{
-    int face = 0;
-    switch(face)
-    {
-        case M_EAST:
-        {
-            if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y].east == 1)
-            {
-                currPos->y = currPos->y + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_EAST;
-            }
-            else if (Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x][currPos->y].south == 1)
-            {
-                currPos->x = currPos->x - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_NORTH;
-            }
-            else if (Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x][currPos->y - 1].east == 1)
-            {
-                currPos->x = currPos->x + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_SOUTH;
-            }
-            else
-                face = M_SOUTH;
-            break;
-        }
-        case M_SOUTH:
-        {
-            if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x][currPos->y].north == 1)
-            {
-                currPos->x = currPos->x + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_SOUTH;
-            }
-            else if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x - 1][currPos->y].north == 1)
-            {
-                currPos->y = currPos->y - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_WEST;
-            }
-            else if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y].east == 1)
-            {
-                currPos->y = currPos->y + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_EAST;
-            }
-            else
-                face = M_WEST;
-            break;
-        }
-        case M_WEST:
-        {
-            if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y].west == 1)
-            {
-                currPos->y = currPos->y - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_WEST;
-            }
-            else if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x][currPos->y + 1].west == 1)
-            {
-                currPos->x = currPos->x - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_NORTH;
-            }
-            else if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x][currPos->y].north == 1)
-            {
-                currPos->x = currPos->x + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_SOUTH;
-            }
-            else if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y].east == 1)
-            {
-                currPos->y = currPos->y + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_EAST;
-            }
-            else if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x][currPos->y + 1].west == 1)
-            {
-                currPos->x = currPos->x - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_NORTH;
-            }
-            else
-                face = M_NORTH;
-            break;
-        }
-        case M_NORTH:
-        {
-            if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x][currPos->y].south == 1)
-            {
-                currPos->x = currPos->x - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_NORTH;
-            }
-            else if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y].east == 1)
-            {
-                currPos->y = currPos->y - 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_WEST;
-            }
-            else if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x + 1][currPos->y].south == 1)
-            {
-                currPos->y = currPos->y + 1;
-                //Move avatar to (currPos->x,currPos->y)
-                face = M_EAST;
-            }
-            else
-                face = M_EAST;
-            break;
-        }
-    }
-}
-
 
 int getDirection(XYPos *start, XYPos *end)
 {
