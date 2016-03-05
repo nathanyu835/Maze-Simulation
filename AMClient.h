@@ -30,5 +30,6 @@
 
 void* newAvatar(void *newAvatar);
 void AMClient();
+int chooseDir(Avatar *avatar, XYPos *rendezvous);
 
  #endif // AMCLIENT.H

@@ -41,6 +41,8 @@
 
 // ---------------- Private variables
 AM_Message *terminated;
+FILE *testLog;
+int moveCount;
 
 // ---------------- Private prototypes
 
@@ -55,7 +57,6 @@ void* newAvatar(void *newAvatar)
 	pos->x = -1;
 	pos->y = -1;
 	avatar->pos = pos;
-	printf("Creating avatar %d\n", avatar->AvatarId);
 
 	//create a new socket for this avatar
 	int sockfd;
@@ -86,6 +87,8 @@ void* newAvatar(void *newAvatar)
 	send(sockfd, ready_msg, sizeof(AM_Message), 0);
 	free(ready_msg);
 
+	fprintf(testLog, "Avatar %d has been created\n", avatar->AvatarId);
+
 	//Allocate memory for move messages to the server, with constant type and id
 	AM_Message *move = (AM_Message *) calloc(1, sizeof(AM_Message));
 	move->type = htonl(AM_AVATAR_MOVE);
@@ -97,26 +100,37 @@ void* newAvatar(void *newAvatar)
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
-		if (rendezvous->x == -1 && avatar->AvatarId == ntohl(response->avatar_turn.TurnId)) {
-			int xSum = 0;
-			int ySum = 0;
-			for(int i = 0; i < nAvatars; i++) {
-				xSum += ntohl(response->avatar_turn.Pos[i].x);
-				ySum += ntohl(response->avatar_turn.Pos[i].y);
+		if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
+			//Only avatar 0 will print this
+			moveCount++;
+			fprintf(testLog, "\nAll avatars successfully initialized\n");
+			//calculate target in the maze
+			if (rendezvous->x == -1) {
+				int xSum = 0;
+				int ySum = 0;
+				for(int i = 0; i < nAvatars; i++) {
+					xSum += ntohl(response->avatar_turn.Pos[i].x);
+					ySum += ntohl(response->avatar_turn.Pos[i].y);
+				}
+				rendezvous->x = xSum/nAvatars;
+				rendezvous->y = ySum/nAvatars;
+				fprintf(testLog, "The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
 			}
-			rendezvous->x = xSum/nAvatars;
-			rendezvous->y = ySum/nAvatars;
-			printf("The target position is (%d, %d)\n", rendezvous->x, rendezvous->y);
+			/***********************************
+			Put algorithm here in place of next line
+			*************************************/
+			int dir = chooseDir(avatar, rendezvous);
+			//Print initial conditions
+			for(int i = 0; i < nAvatars; i++) {
+				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
+					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+			}
+			fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
+						moveCount, avatar->AvatarId, dir);
+			//Send move message to the server
+			move->avatar_move.Direction = htonl(dir);
+			send(sockfd, move, sizeof(AM_Message), 0);
 		}
-		int dir = chooseDir(avatar, rendezvous);
-		printf("After the move, the new positions are:\n");
-		for(int i = 0; i < nAvatars; i++) {
-			printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
-								ntohl(response->avatar_turn.Pos[i].y));
-		}
-		printf("It is Avatar %d's turn, attempted move: %d\n", avatar->AvatarId, dir);
-		move->avatar_move.Direction = htonl(dir);
-		send(sockfd, move, sizeof(AM_Message), 0);
 	}
 	while(1 == 1) {
 		//Wait for message from the server
@@ -125,18 +139,26 @@ void* newAvatar(void *newAvatar)
 		int respType = ntohl(response->type);
 		if(respType == AM_AVATAR_TURN) {
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
+				moveCount++;
 				//Update avatar position
 				avatar->pos->x = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+
 				avatar->pos->y = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
-				//Call algorithm to choose the next move
+				/***********************************
+				Put algorithm here in place of next line
+				*************************************/
 				int dir = chooseDir(avatar, rendezvous);
-				printf("After the move, the new positions are:\n");
+				//Print info to logfile
+				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
-					printf("The position of avatar %d is (%d, %d)\n", i, ntohl(response->avatar_turn.Pos[i].x), 
-										ntohl(response->avatar_turn.Pos[i].y));
+					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, 
+							ntohl(response->avatar_turn.Pos[i].x), 
+									ntohl(response->avatar_turn.Pos[i].y));
 				}
-				printf("It is Avatar %d's turn, attempted move: %d towards (%d, %d)\n", avatar->AvatarId, dir, rendezvous->x, rendezvous->y);
-				usleep(10000); //sleep to allow time for print statments
+				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
+						moveCount, avatar->AvatarId, dir);
+				//sleep to allow time for print statments
+				usleep(10000);
 				move->avatar_move.Direction = htonl(dir);
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
@@ -144,16 +166,32 @@ void* newAvatar(void *newAvatar)
 		} else {
 			if(respType == AM_MAZE_SOLVED && avatar->AvatarId == 0) {
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
-				printf("Maze completed, avatar %d exiting\n", avatar->AvatarId);
+				fprintf(testLog, "Maze completed in %d moves\n", moveCount);
 				terminated = response;
 				break;
-			}  else if (respType == AM_AVATAR_OUT_OF_TURN) {
-				usleep(10000); //wait then continue
+			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
+						| AM_UNKNOWN_MSG_TYPE) != 0) {
+				terminated = response;
+				sleep(100); //Do not attempt to make another move
 			}
+			//Otherwise wait and continue
+			sleep(1);
 		}
 
 	}
 	return NULL;
+}
+
+int chooseDir(Avatar *avatar, XYPos *rendezvous) {
+	int dir = rand() % 4;
+	int ax = avatar->pos->x;
+	int ay = avatar->pos->y;
+	int rx = rendezvous->x;
+	int ry = rendezvous->y;
+	if(ax == rx && ay == ry) {
+		return M_NULL_MOVE;
+	}
+	return dir;
 }
 
 
@@ -161,8 +199,22 @@ void* newAvatar(void *newAvatar)
 void AMClient()
 {
 	terminated = NULL;
-	int curr_id = 0;
+	moveCount = 0;
+
+	char logPath[200];
+	sprintf(logPath,"./testing_log_nAvatars_%d_Difficulty_%d", nAvatars, Difficulty);
+	testLog = fopen(logPath, "w+");
+	if(testLog == NULL) {
+		printf("Error creating test log file: %s\n", logPath);
+		return;
+	}
+	fprintf(testLog, "Testing file for Amazing Project\n");
+	fprintf(testLog, "nAvatars: %d\n", nAvatars);
+	fprintf(testLog, "Difficulty: %d\n\n", Difficulty);
+
 	pthread_t avatars[nAvatars];
+	//Create a new thread for each avatar passing it a new Avatar pointer
+	int curr_id = 0;
 	while(curr_id < nAvatars) {
 		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
 		nextAvatar->AvatarId = curr_id;
@@ -171,11 +223,39 @@ void AMClient()
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
 		}
-		for(int i = 0; i<1000000; i++);
+		usleep(10000);
 		curr_id++;
 	}
 	while (terminated == NULL) {
-		sleep(1);
+		usleep(10000);
 	}
+	//The maze has terminated, check the last message for exit status
+	switch (ntohl(terminated->type)) {
+		case AM_MAZE_SOLVED:
+			sleep(1); //Make sure everything has been written to the logfile before exitting
+			break;
+		case AM_NO_SUCH_AVATAR | AM_ERROR_MASK:
+			fprintf(testLog, "Invalid AvatarId. Terminating program\n");
+			break;
+		case AM_TOO_MANY_MOVES | AM_ERROR_MASK:
+			fprintf(testLog, "Move limit has been reached. Terminating program\n");
+			break;
+		case AM_SERVER_DISK_QUOTA | AM_ERROR_MASK:
+			fprintf(testLog, "Disk quota has been reached. Terminating program\n");
+			break;
+		case AM_SERVER_OUT_OF_MEM | AM_ERROR_MASK:
+			fprintf(testLog, "Disk quota has been reached. Terminating program\n");
+			break;
+		case AM_UNKNOWN_MSG_TYPE | AM_ERROR_MASK:
+			fprintf(testLog, "Unkown message type sent to server. Terminating program\n");
+			break;
+		case AM_SERVER_TIMEOUT | AM_ERROR_MASK:
+			fprintf(testLog, "Disk quota has been reached. Terminating program\n");
+			break;
+		case AM_UNEXPECTED_MSG_TYPE | AM_ERROR_MASK:
+			fprintf(testLog, "Disk quota has been reached. Terminating program\n");
+			break;
+	}
+	fclose(testLog);
 }
 

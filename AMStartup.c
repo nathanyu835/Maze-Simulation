@@ -48,20 +48,7 @@ int mazeHeight;
 
 // ---------------- Public functions
 
-
-int chooseDir(Avatar *avatar, XYPos *rendezvous) {
-	int dir = rand() % 4;
-	int ax = avatar->pos->x;
-	int ay = avatar->pos->y;
-	int rx = rendezvous->x;
-	int ry = rendezvous->y;
-	if(ax == rx && ay == ry) {
-		return M_NULL_MOVE;
-	}
-	return dir;
-}
-
-void AMStartup(int Difficulty)
+void AMStartup()
 {
 	int sockfd;
 	struct sockaddr_in servaddr;
@@ -96,15 +83,8 @@ void AMStartup(int Difficulty)
 	AM_Message *AM_INIT_resp = (AM_Message *) calloc(1, sizeof(AM_Message));
 	recv(sockfd, AM_INIT_resp, sizeof(AM_Message), 0);
 	if (ntohl(AM_INIT_resp->type) != AM_INIT_OK) {
-		printf("Initialization failed with type %u\n", ntohl(AM_INIT_resp->type));
+		printf("Initialization failed with type %u\n", ntohl(AM_INIT_resp->type)-AM_ERROR_MASK);
 		return;
-	}
-	if (ntohl(AM_INIT_resp->type) == AM_INIT_OK) {
-		printf("Message type is %u\n", ntohl(AM_INIT_resp->type));
-		printf("MazePort is %u\n", ntohl(AM_INIT_resp->init_ok.MazePort));
-		printf("Maze width is %u\n", ntohl(AM_INIT_resp->init_ok.MazeWidth));
-		printf("Maze height is %u\n", ntohl(AM_INIT_resp->init_ok.MazeHeight));
-
 	}
 	//Set maze variables
 	mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
@@ -122,9 +102,10 @@ int main(int argc, char **argv)
 {
 	hostIP = argv[3];
 	nAvatars = atoi(argv[1]);
+	Difficulty = atoi(argv[2]);
 	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
 	rendezvous->x = -1;
 	rendezvous->y = -1;
-	AMStartup(atoi(argv[2]));
+	AMStartup();
 	return 0;
 }

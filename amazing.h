@@ -168,6 +168,7 @@ XYPos *rendezvous;
 MazeNode **Amazing;
 char *hostIP;
 int nAvatars;
+int Difficulty;
 int mazePort;
 
 // ---------------- Prototypes/Macros
