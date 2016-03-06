@@ -186,7 +186,7 @@ int isProductive(XYPos *currPos)
     return -1;
 }
 
-int Traverse(Avatar *avatar)
+int getMove(XYPos *curr)
 {
     //XYPos *startingPoint;
     //XYPos *currPos;
@@ -195,21 +195,55 @@ int Traverse(Avatar *avatar)
     //{
         //if(∃ a productive path) // A productive path is the one that makes our MD to dst smaller
         //    Take the productive path;
-        int productive = isProductive(avatar->pos);
+        int productive = isProductive(curr);
         if(productive != -1)
             return productive;
             //The function calling this method needs to attempt this move
             //if it fails, update the walls and then call the function again until -1 is returned
         else
         {
-            //bestMD = getManhattan(currPos, rendezvous);
-            //Imagine a line between cur and dst;
-            //Take the first path in the left/right of the line; // The left/right selection affects the following hand rule
-            while(isProductive(avatar->pos) == -1) //getManhattan(currPos, rendezvous) != bestMD || 
+            int size = 0, count = 0;
+            if(Amazing[XYPos->x-1][XYPos->y].visited == 0)
+                size++;
+            if(Amazing[XYPos->x+1][XYPos->y].visited == 0)
+                size++;
+            if(Amazing[XYPos->x][XYPos->y-1].visited == 0)
+                size++;
+            if(Amazing[XYPos->x][XYPos->y+1].visited == 0)
+                size++;
+
+            int options[size];
+            if(Amazing[XYPos->x-1][XYPos->y].visited == 0)
+            {
+                options[count] = M_WEST;
+                count++;
+            }
+            if(Amazing[XYPos->x+1][XYPos->y].visited == 0)
+            {
+                options[count] = M_EAST;
+                count++;
+            }
+            if(Amazing[XYPos->x][XYPos->y-1].visited == 0)
+            {
+                options[count] = M_NORTH;
+                count++;
+            }
+            if(Amazing[XYPos->x][XYPos->y+1].visited == 0)
+            {
+                options[count] = M_SOUTH;
+                count++;
+            }
+
+            return options[rand() % size];
+            /*
+            bestMD = getManhattan(currPos, rendezvous);
+            Imagine a line between cur and dst;
+            Take the first path in the left/right of the line; // The left/right selection affects the following hand rule
+            while(isProductive(curr) == -1) //getManhattan(currPos, rendezvous) != bestMD || 
             {
                 // The opposite of the selected side of the line (right hand rule)
                 //int face = getDirection(currPos, rendezvous);
-                /*
+                
                 switch(face)
                 {
                     case M_EAST:
@@ -320,10 +354,9 @@ int Traverse(Avatar *avatar)
                             face = M_EAST;
                         break;
                     }
-                }
-                */
+                }   
             }
-            return 0;
+            */
         }
     //}
 }
@@ -384,5 +417,32 @@ void addDeadEnd(XYPos *pos, int face)
     {
         x = x + 1;
         Amazing[x][y].west = 1;
+    }
+}
+
+void addWall(XYPos *pos, int face)
+{
+    int x = pos->x;
+    int y = pos->y;
+
+    if (face == M_NORTH)
+    {
+        Amazing[x][y].north = 1;
+        Amazing[x][y-1].south = 1;
+    }
+    else if (face == M_SOUTH)
+    {
+        Amazing[x][y].south = 1;
+        Amazing[x][y+1].north = 1;
+    }
+    else if (face == M_WEST)
+    {
+        Amazing[x][y].west = 1;
+        Amazing[x-1][y].east = 1;
+    }
+    else if (face == M_EAST)
+    {
+        Amazing[x][y].east = 1;
+        Amazing[x+1][y].west = 1;
     }
 }

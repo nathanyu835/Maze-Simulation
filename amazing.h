@@ -172,7 +172,7 @@ int mazeWidth;
 int mazeHeight;
 
 // ---------------- Prototypes/Macros
-int Traverse();
+int getMove(XYPos *curr);
 void initializeMaze(int height, int width, int nAvatars);
 void createPerimeter(int height, int width);
 void getRendezvous(Avatar *avatar);

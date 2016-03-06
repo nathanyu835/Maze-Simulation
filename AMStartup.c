@@ -102,10 +102,10 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
-    strcpy(hostname, argv[3]);
     nAvatars = atoi(argv[1]);
     difficulty = atoi(argv[2]);
+    hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
+    strcpy(hostname, argv[3]);
 
 	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
 	rendezvous->x = -1;

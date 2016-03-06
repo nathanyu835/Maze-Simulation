@@ -119,7 +119,7 @@ void* newAvatar(void *newAvatar)
 			/***********************************
 			Put algorithm here in place of next line
 			*************************************/
-			int dir = chooseDir(avatar, rendezvous);
+			int dir = getMove(avatar->pos);
 			//Print initial conditions
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
@@ -143,17 +143,16 @@ void* newAvatar(void *newAvatar)
 				//Update avatar position
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
-				if (avatar->pos->x == newX && avatar->pos->y == newY) {
-					/***********************
-					ADD UPDATE WALL CODE
-					*********************/
+				if (avatar->pos->x == newX && avatar->pos->y == newY) 
+				{
+					addWalls(avatar->pos, face);
 				}
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
-				int dir = chooseDir(avatar, rendezvous);
+				int dir = getMove(avatar->pos); //if move is not made, addWalls and call getDirection again
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
@@ -188,6 +187,7 @@ void* newAvatar(void *newAvatar)
 	return NULL;
 }
 
+/*
 int chooseDir(Avatar *avatar, XYPos *rendezvous) {
 	int dir = rand() % 4;
 	int ax = avatar->pos->x;
@@ -198,7 +198,7 @@ int chooseDir(Avatar *avatar, XYPos *rendezvous) {
 		return M_NULL_MOVE;
 	}
 	return dir;
-}
+}*/
 
 
 
