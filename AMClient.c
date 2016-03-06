@@ -119,7 +119,7 @@ void* newAvatar(void *newAvatar)
 			/***********************************
 			Put algorithm here in place of next line
 			*************************************/
-			int dir = getMove(avatar->pos);
+			int dir = getMove(avatar->pos, avatar->AvatarId);
 			//Print initial conditions
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
@@ -129,6 +129,7 @@ void* newAvatar(void *newAvatar)
 						moveCount, avatar->AvatarId, dir);
 			//Send move message to the server
 			move->avatar_move.Direction = htonl(dir);
+			avatar->face = dir;
 			send(sockfd, move, sizeof(AM_Message), 0);
 			justMoved = 1;
 		}
@@ -145,7 +146,7 @@ void* newAvatar(void *newAvatar)
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				if (avatar->pos->x == newX && avatar->pos->y == newY) 
 				{
-					addWall(avatar->pos, face);
+					addWall(avatar->pos, avatar->face);
 				}
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
@@ -158,7 +159,7 @@ void* newAvatar(void *newAvatar)
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
-				int dir = getMove(avatar->pos); 
+				int dir = getMove(avatar->pos, avatar->AvatarId); 
 				//if move is not made, addWalls and call getDirection again
 				//if move IS made, update visited
 				//Print info to logfile
@@ -173,6 +174,7 @@ void* newAvatar(void *newAvatar)
 				//sleep to allow time for print statments
 				usleep(10000);
 				move->avatar_move.Direction = htonl(dir);
+				avatar->face = dir;
 				send(sockfd, move, sizeof(AM_Message), 0);
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
