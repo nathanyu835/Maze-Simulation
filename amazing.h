@@ -90,6 +90,7 @@ typedef struct Avatar
 {
     int fd;
     int AvatarId;
+    int face;
     XYPos *pos;
 } Avatar;
 

@@ -165,6 +165,27 @@ int isProductive(XYPos *currPos)
 
     if(changeY > 0) //Avatar needs to move south to reach rendezvous
     {
+        if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y+1].visited == 0)
+            return M_SOUTH;
+    }
+    else
+    {
+        if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y-1].visited == 0)
+            return M_NORTH;
+    }
+    if(changeX > 0) //Avatar needs to move east to reach rendezvous
+    {
+        if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x+1][currPos->y].visited == 0)
+            return M_EAST;    
+    }
+    else
+    {
+        if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x-1][currPos->y].visited == 0)
+            return M_WEST;
+    }
+
+    if(changeY > 0) //Case where all paths are once visited (lower priority)
+    {
         if(Amazing[currPos->x][currPos->y].south == 0)
             return M_SOUTH;
     }
@@ -211,8 +232,43 @@ int getMove(XYPos *currPos)
                 size++;
             if(Amazing[currPos->x][currPos->y+1].visited == 0 && Amazing[currPos->x][currPos->y].south == 0)
                 size++;
-            if(size == 0)
-                return -1;
+            if(size == 0) //Case where all paths are once visited (lower priority)
+            {
+                printf("No unvisited paths exist!\n");
+                if(Amazing[currPos->x][currPos->y].west == 0)
+                    size++;
+                if(Amazing[currPos->x][currPos->y].east == 0)
+                    size++;
+                if(Amazing[currPos->x][currPos->y].north == 0)
+                    size++;
+                if(Amazing[currPos->x][currPos->y].south == 0)
+                    size++;
+
+                int options[size];
+                if(Amazing[currPos->x][currPos->y].west == 0)
+                {
+                    options[count] = M_WEST;
+                    count++;
+                }
+                if(Amazing[currPos->x][currPos->y].east == 0)
+                {
+                    options[count] = M_EAST;
+                    count++;
+                }
+                if(Amazing[currPos->x][currPos->y].north == 0)
+                {
+                    options[count] = M_NORTH;
+                    count++;
+                }
+                if(Amazing[currPos->x][currPos->y].south == 0)
+                {
+                    options[count] = M_SOUTH;
+                    count++;
+                }
+
+                return options[rand() % size];
+            }
+
 
             int options[size];
             if(Amazing[currPos->x-1][currPos->y].visited == 0 && Amazing[currPos->x][currPos->y].west == 0)

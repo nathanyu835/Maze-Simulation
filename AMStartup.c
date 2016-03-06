@@ -90,6 +90,7 @@ void AMStartup()
 
 	//Create maze
 	initializeMaze(mazeHeight, mazeWidth, nAvatars);
+	printf("Maze initialized!\n");
 	AMClient();
 }
 

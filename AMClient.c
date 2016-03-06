@@ -145,8 +145,7 @@ void* newAvatar(void *newAvatar)
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				if (avatar->pos->x == newX && avatar->pos->y == newY) 
 				{
-					//get face from prevMove somehow?
-					//addWall(avatar->pos, face);
+					addWall(avatar->pos, face);
 				}
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
