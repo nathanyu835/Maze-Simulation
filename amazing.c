@@ -187,22 +187,34 @@ int isProductive(XYPos *currPos, int i)
     if(changeY > 0) //Case where all paths are once visited (lower priority)
     {
         if(Amazing[currPos->x][currPos->y].south == 0)
+        {
+            addDeadEnd(currPos, M_SOUTH);
             return M_SOUTH;
+        }
     }
     else
     {
         if(Amazing[currPos->x][currPos->y].north == 0)
+        {
+            addDeadEnd(currPos, M_NORTH);
             return M_NORTH;
+        }
     }
     if(changeX > 0) //Avatar needs to move east to reach rendezvous
     {
         if(Amazing[currPos->x][currPos->y].east == 0)
+        {
+            addDeadEnd(currPos, M_EAST);
             return M_EAST;    
+        }
     }
     else
     {
         if(Amazing[currPos->x][currPos->y].west == 0)
+        {
+            addDeadEnd(currPos, M_WEST);
             return M_WEST;
+        }
     }
     return -1;
 }
@@ -247,21 +259,25 @@ int getMove(XYPos *currPos, int i)
                 int options[size];
                 if(Amazing[currPos->x][currPos->y].west == 0)
                 {
+                    addDeadEnd(currPos, M_WEST);
                     options[count] = M_WEST;
                     count++;
                 }
                 if(Amazing[currPos->x][currPos->y].east == 0)
                 {
+                    addDeadEnd(currPos, M_EAST);
                     options[count] = M_EAST;
                     count++;
                 }
                 if(Amazing[currPos->x][currPos->y].north == 0)
                 {
+                    addDeadEnd(currPos, M_NORTH);
                     options[count] = M_NORTH;
                     count++;
                 }
                 if(Amazing[currPos->x][currPos->y].south == 0)
                 {
+                    addDeadEnd(currPos, M_SOUTH);
                     options[count] = M_SOUTH;
                     count++;
                 }
