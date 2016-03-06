@@ -186,7 +186,7 @@ int isProductive(XYPos *currPos)
     return -1;
 }
 
-int getMove(XYPos *curr)
+int getMove(XYPos *currPos)
 {
     //XYPos *startingPoint;
     //XYPos *currPos;
@@ -195,7 +195,7 @@ int getMove(XYPos *curr)
     //{
         //if(∃ a productive path) // A productive path is the one that makes our MD to dst smaller
         //    Take the productive path;
-        int productive = isProductive(curr);
+        int productive = isProductive(currPos);
         if(productive != -1)
             return productive;
             //The function calling this method needs to attempt this move
@@ -203,32 +203,34 @@ int getMove(XYPos *curr)
         else
         {
             int size = 0, count = 0;
-            if(Amazing[XYPos->x-1][XYPos->y].visited == 0)
+            if(Amazing[currPos->x-1][currPos->y].visited == 0 && Amazing[currPos->x][currPos->y].west == 0)
                 size++;
-            if(Amazing[XYPos->x+1][XYPos->y].visited == 0)
+            if(Amazing[currPos->x+1][currPos->y].visited == 0 && Amazing[currPos->x][currPos->y].east == 0)
                 size++;
-            if(Amazing[XYPos->x][XYPos->y-1].visited == 0)
+            if(Amazing[currPos->x][currPos->y-1].visited == 0 && Amazing[currPos->x][currPos->y].north == 0)
                 size++;
-            if(Amazing[XYPos->x][XYPos->y+1].visited == 0)
+            if(Amazing[currPos->x][currPos->y+1].visited == 0 && Amazing[currPos->x][currPos->y].south == 0)
                 size++;
+            if(size == 0)
+                return -1;
 
             int options[size];
-            if(Amazing[XYPos->x-1][XYPos->y].visited == 0)
+            if(Amazing[currPos->x-1][currPos->y].visited == 0 && Amazing[currPos->x][currPos->y].west == 0)
             {
                 options[count] = M_WEST;
                 count++;
             }
-            if(Amazing[XYPos->x+1][XYPos->y].visited == 0)
+            if(Amazing[currPos->x+1][currPos->y].visited == 0 && Amazing[currPos->x][currPos->y].east == 0)
             {
                 options[count] = M_EAST;
                 count++;
             }
-            if(Amazing[XYPos->x][XYPos->y-1].visited == 0)
+            if(Amazing[currPos->x][currPos->y-1].visited == 0 && Amazing[currPos->x][currPos->y].north == 0)
             {
                 options[count] = M_NORTH;
                 count++;
             }
-            if(Amazing[XYPos->x][XYPos->y+1].visited == 0)
+            if(Amazing[currPos->x][currPos->y+1].visited == 0 && Amazing[currPos->x][currPos->y].south == 0)
             {
                 options[count] = M_SOUTH;
                 count++;

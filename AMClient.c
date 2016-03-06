@@ -145,14 +145,17 @@ void* newAvatar(void *newAvatar)
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				if (avatar->pos->x == newX && avatar->pos->y == newY) 
 				{
-					addWalls(avatar->pos, face);
+					//get face from prevMove somehow?
+					//addWall(avatar->pos, face);
 				}
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
-				int dir = getMove(avatar->pos); //if move is not made, addWalls and call getDirection again
+				int dir = getMove(avatar->pos); 
+				//if move is not made, addWalls and call getDirection again
+				//if move IS made, update visited
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {

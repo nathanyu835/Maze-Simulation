@@ -178,7 +178,8 @@ void createPerimeter(int height, int width);
 void getRendezvous(Avatar *avatar);
 int getManhattan(XYPos *start, XYPos *end);
 int getDirection(XYPos *start, XYPos *end);
-void rightHand();
+void addDeadEnd(XYPos *pos, int face);
+void addWall(XYPos *pos, int face);
 
 
 
