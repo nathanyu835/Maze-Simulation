@@ -99,7 +99,7 @@ void* newAvatar(void *newAvatar)
 
 	int justMoved = 0;
 	int firstMove = 1;
-	
+
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
@@ -107,6 +107,7 @@ void* newAvatar(void *newAvatar)
 			//Only avatar 0 will print this
 			moveCount++;
 			fprintf(testLog, "\nAll avatars successfully initialized\n");
+			printf("All avatars successfully initialized\n");
 			//calculate target in the maze
 			if (rendezvous->x == -1) {
 				int xSum = 0;
@@ -118,11 +119,13 @@ void* newAvatar(void *newAvatar)
 				rendezvous->x = xSum/nAvatars;
 				rendezvous->y = ySum/nAvatars;
 				fprintf(testLog, "The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
+				printf("The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
 			}
 			int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 			int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 			avatar->pos->x = newX;
 			avatar->pos->y = newY;
+			visitSquare(avatar->pos, avatar->AvatarId);
 			firstMove = 0;
 			/***********************************
 			Put algorithm here in place of next line
@@ -131,9 +134,13 @@ void* newAvatar(void *newAvatar)
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
 					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
+				printf("The initial position of avatar %d is (%d, %d)\n", i, 
+					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
 			}
 			int dir = getMove(avatar->pos, avatar->AvatarId);
 			fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
+						moveCount, avatar->AvatarId, dir);
+			printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 			//Send move message to the server
 			move->avatar_move.Direction = htonl(dir);
@@ -155,20 +162,22 @@ void* newAvatar(void *newAvatar)
 				if (avatar->pos->x == newX && avatar->pos->y == newY) 
 				{
 					addWall(avatar->pos, avatar->face);
+				} else {
+					avatar->pos->x = newX;
+					avatar->pos->y = newY;
+					visitSquare(avatar->pos, avatar->AvatarId);
 				}
-				avatar->pos->x = newX;
-				avatar->pos->y = newY;
-
 			}
 			if (firstMove == 1) {
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
+				visitSquare(avatar->pos, avatar->AvatarId);
 				firstMove = 0;
 			}
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
-				usleep(10000); //give qanother avatar time to update the maze
+				usleep(100000); //give qanother avatar time to update the maze
 				moveCount++;
 				justMoved = 1;
 				/***********************************
@@ -179,12 +188,16 @@ void* newAvatar(void *newAvatar)
 				//if move IS made, update visited
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
+				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
 					int currX = ntohl(response->avatar_turn.Pos[i].x);
 					int currY = ntohl(response->avatar_turn.Pos[i].y);
-					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, currY, currX);
+					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, currX, currY);
+					printf("The position of avatar %d is (%d, %d)\n", i, currX, currY);
 				}
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
+						moveCount, avatar->AvatarId, dir);
+				printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 				//sleep to allow time for print statments
 				usleep(10000);
