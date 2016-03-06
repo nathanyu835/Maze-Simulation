@@ -261,7 +261,11 @@ void AMClient()
 	int curr_id = 0;
 	while(curr_id < nAvatars) {
 		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
-		nextAvatar->AvatarId = curr_id;
+		
+        // Make array of avatars
+        avatars[curr_id] = nextAvatar;
+
+        nextAvatar->AvatarId = curr_id;
 		int iret1 = pthread_create(&(avatars[curr_id]), NULL, newAvatar, nextAvatar);
 		if(iret1) {
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
