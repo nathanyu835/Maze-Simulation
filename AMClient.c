@@ -96,7 +96,10 @@ void* newAvatar(void *newAvatar)
 
 	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
+
 	int justMoved = 0;
+	int firstMove = 1;
+	
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
@@ -116,15 +119,20 @@ void* newAvatar(void *newAvatar)
 				rendezvous->y = ySum/nAvatars;
 				fprintf(testLog, "The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
 			}
+			int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+			int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
+			avatar->pos->x = newX;
+			avatar->pos->y = newY;
+			firstMove = 0;
 			/***********************************
 			Put algorithm here in place of next line
 			*************************************/
-			int dir = getMove(avatar->pos, avatar->AvatarId);
 			//Print initial conditions
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
 					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
 			}
+			int dir = getMove(avatar->pos, avatar->AvatarId);
 			fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 			//Send move message to the server
@@ -151,6 +159,13 @@ void* newAvatar(void *newAvatar)
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
 
+			}
+			if (firstMove == 1) {
+				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
+				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
+				avatar->pos->x = newX;
+				avatar->pos->y = newY;
+				firstMove = 0;
 			}
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
 				usleep(10000); //give qanother avatar time to update the maze
