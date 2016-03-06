@@ -96,7 +96,7 @@ void* newAvatar(void *newAvatar)
 
 	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
-
+	int justMoved = 0;
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
@@ -130,6 +130,7 @@ void* newAvatar(void *newAvatar)
 			//Send move message to the server
 			move->avatar_move.Direction = htonl(dir);
 			send(sockfd, move, sizeof(AM_Message), 0);
+			justMoved = 1;
 		}
 	}
 	while(1 == 1) {
@@ -138,9 +139,8 @@ void* newAvatar(void *newAvatar)
 		//Check if it is this avatar's turn to move, if so send move request to server
 		int respType = ntohl(response->type);
 		if(respType == AM_AVATAR_TURN) {
-			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
-				moveCount++;
-				//Update avatar position
+			if(justMoved == 1) {
+				justMoved = 0;
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				if (avatar->pos->x == newX && avatar->pos->y == newY) 
@@ -150,6 +150,12 @@ void* newAvatar(void *newAvatar)
 				}
 				avatar->pos->x = newX;
 				avatar->pos->y = newY;
+
+			}
+			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
+				usleep(10000); //give qanother avatar time to update the maze
+				moveCount++;
+				justMoved = 1;
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
@@ -159,9 +165,9 @@ void* newAvatar(void *newAvatar)
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
-					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, 
-							ntohl(response->avatar_turn.Pos[i].x), 
-									ntohl(response->avatar_turn.Pos[i].y));
+					int currX = ntohl(response->avatar_turn.Pos[i].x);
+					int currY = ntohl(response->avatar_turn.Pos[i].y);
+					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, currY, currX);
 				}
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
