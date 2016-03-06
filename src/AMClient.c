@@ -97,9 +97,9 @@ void* newAvatar(void *newAvatar)
 	//Allocate memory for response messages from the server
 	AM_Message *response = (AM_Message *) calloc(1, sizeof(AM_Message));
 
-	int justMoved = 0;
-	int firstMove = 1;
-
+	int justMoved = 0; //for updating wall
+	int firstMove = 1; //for updating initial square
+	
 	//wait for the first turn so that we can set the target location
 	recv(sockfd, response, sizeof(AM_Message), 0);
 	if(ntohl(response->type) == AM_AVATAR_TURN) {
@@ -177,7 +177,7 @@ void* newAvatar(void *newAvatar)
 				firstMove = 0;
 			}
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
-				usleep(100000); //give qanother avatar time to update the maze
+				usleep(10000); //give qanother avatar time to update the maze
 				moveCount++;
 				justMoved = 1;
 				/***********************************

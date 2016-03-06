@@ -135,13 +135,13 @@ void createPerimeter(int height, int width)
     for(int i = 0; i < width; i++)
     {
         Amazing[i][0].north = 1;
-        Amazing[i][width-1].south = 1;
+        Amazing[i][height-1].south = 1;
     }
 
     for(int j = 0; j < height; j++)
     {
         Amazing[0][j].west = 1;
-        Amazing[height-1][j].east = 1;
+        Amazing[width-1][j].east = 1;
     }
 }
 
@@ -199,86 +199,44 @@ int isProductive(XYPos *currPos, int i)
     if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x+1][currPos->y].visited[i] == 0)
         return M_EAST;
     if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x-1][currPos->y].visited[i] == 0)
-        return M_WEST;  
-
-    /*
-    if(changeY > 0) //Case where all paths are once visited (lower priority)
-    {
-        if(Amazing[currPos->x][currPos->y].south == 0)
-        {
-            addDeadEnd(currPos, M_SOUTH);
-            return M_SOUTH;
-        }
-    }
-    else
-    {
-        if(Amazing[currPos->x][currPos->y].north == 0)
-        {
-            addDeadEnd(currPos, M_NORTH);
-            return M_NORTH;
-        }
-    }
-    if(changeX > 0) //Avatar needs to move east to reach rendezvous
-    {
-        if(Amazing[currPos->x][currPos->y].east == 0)
-        {
-            addDeadEnd(currPos, M_EAST);
-            return M_EAST;    
-        }
-    }
-    else
-    {
-        if(Amazing[currPos->x][currPos->y].west == 0)
-        {
-            addDeadEnd(currPos, M_WEST);
-            return M_WEST;
-        }
-    }
-    */
+        return M_WEST;
     return -1;
 }
 
 int getMove(XYPos *currPos, int i)
 {
-    //XYPos *startingPoint;
-    //XYPos *currPos;
-    //int bestMD = getManhattan(startingPoint, rendezvous); // It stores the closest MD we ever had to rendezvous
-    //while(!(currPos->x == rendezvous->x && currPos->y == rendezvous->y))
-    //{
-        //if(∃ a productive path) // A productive path is the one that makes our MD to dst smaller
-        //    Take the productive path;
-        if(currPos->x == rendezvous->x && currPos->y == rendezvous->y)
-            return M_NULL_MOVE;
-        int productive = isProductive(currPos, i);
-        if(productive != -1)
-            return productive;
-            //The function calling this method needs to attempt this move
-            //if it fails, update the walls and then call the function again until -1 is returned
+    if(currPos->x == rendezvous->x && currPos->y == rendezvous->y)
+        return M_NULL_MOVE;
+    int productive = isProductive(currPos, i);
+    if(productive != -1)
+        return productive;
+        //The function calling this method needs to attempt this move
+        //if it fails, update the walls and then call the function again until -1 is returned
 
-            printf("No unvisited paths exist!\n");
+    printf("No unvisited paths exist!\n");
 
-            if(Amazing[currPos->x][currPos->y].west == 0)
-            {
-                addDeadEnd(currPos, M_WEST);
-                return M_WEST;
-            }
-            if(Amazing[currPos->x][currPos->y].east == 0)
-            {
-                addDeadEnd(currPos, M_EAST);
-                return M_EAST;
-            }
-            if(Amazing[currPos->x][currPos->y].north == 0)
-            {
-                addDeadEnd(currPos, M_NORTH);
-                return M_NORTH;
-            }
-            if(Amazing[currPos->x][currPos->y].south == 0)
-            {
-                addDeadEnd(currPos, M_SOUTH);
-                return M_SOUTH;
-            }
-            printf("Error, stuck in a box\n");
-            return 0;
+    if(Amazing[currPos->x][currPos->y].west == 0)
+    {
+        addDeadEnd(currPos, M_WEST);
+        return M_WEST;
+    }
+    if(Amazing[currPos->x][currPos->y].east == 0)
+    {
+        addDeadEnd(currPos, M_EAST);
+        return M_EAST;
+    }
+    if(Amazing[currPos->x][currPos->y].north == 0)
+    {
+        addDeadEnd(currPos, M_NORTH);
+        return M_NORTH;
+    }
+    if(Amazing[currPos->x][currPos->y].south == 0)
+    {
+        addDeadEnd(currPos, M_SOUTH);
+        return M_SOUTH;
+    }
+    printf("Error, stuck in a box\n");
+    return 0;
 }
 
 int getDirection(XYPos *start, XYPos *end)

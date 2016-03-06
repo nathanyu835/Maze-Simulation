@@ -54,6 +54,7 @@ void AMStartup()
 	if ((sockfd = socket (AF_INET, SOCK_STREAM, 0)) <0) {
         	perror("Problem in creating the socket\n");
         	exit(2);
+        	return;
     	}
 
     	//Setup socket
@@ -66,6 +67,7 @@ void AMStartup()
      	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr))<0) {
         	perror("Problem in connecting to the server\n");
         	exit(3);
+        	return;
      	}
 
      	//Send init message to the server

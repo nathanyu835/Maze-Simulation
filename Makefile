@@ -1,29 +1,26 @@
 CC = gcc
-CFLAGS = -Wall -pedantic -std=c11 -ggdb
+CFLAGS = -Wall -pedantic -std=c11 -ggdb -pthread
 
 # my project details
-EXEC = query
-OBJS = src/file.o src/web.o src/hashtable.o src/list.o src/query.o
-SRCS = src/query.c src/hashtable.c src/list.c src/web.c src/file.c src/hashtable.h src/list.h src/web.h src/file.h
+EXEC = amazing
+OBJS = src/AMStartup.o src/AMClient.o src/amazing.o 
+SRCS = src/AMStartup.c src/AMClient.c src/amazing.c
 
 $(EXEC): $(OBJS)
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS)
 
-src/query.o: src/query.c src/list.h src/hashtable.h
-	$(CC) $(CFLAGS) -o src/query.o -c src/query.c
+src/AMStartup.o: src/AMStartup.c src/AMClient.h
+	$(CC) $(CFLAGS) -o src/AMStartup.o -c src/AMStartup.c
 
-src/list.o: src/list.c src/list.h
-	$(CC) $(CFLAGS) -o src/list.o -c src/list.c
+src/AMClient.o: src/AMClient.c src/AMClient.h
+	$(CC) $(CFLAGS) -o src/AMClient.o -c src/AMClient.c
 
-src/hashtable.o: src/hashtable.c src/hashtable.h
-	$(CC) $(CFLAGS) -o src/hashtable.o -c src/hashtable.c
-
-src/web.o: src/.c src/web.h
-	$(CC) $(CFLAGS) -o src/web.o -c src/web.c
+src/amazing.o: src/amazing.c src/amazing.h
+	$(CC) $(CFLAGS) -o src/amazing.o -c src/amazing.c
 
 debug: $(SRCS)
-	$(CC) $(CFLAGS) -g -ggdb -c $(SRCS)
-	$(CC) $(CFLAGS) -g -ggdb -o $(EXEC) $(OBJS)
+	$(CC) $(CFLAGS) -g -c $(SRCS)
+	$(CC) $(CFLAGS) -g -o $(EXEC) $(OBJS)
 
 clean:
 	rm -f *~
