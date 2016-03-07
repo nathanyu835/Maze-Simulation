@@ -69,6 +69,7 @@ typedef struct MazeNode
     int north, east, south, west; // keeps track of invalid directions
 
     int whoLast;    // keeps track of which avatar was here last
+    int lastDir;    // keep track of last direction faced
 
 } MazeNode;
 

@@ -113,6 +113,8 @@ int main(int argc, char **argv)
 	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
 	rendezvous->x = -1;
 	rendezvous->y = -1;
-	AMStartup();
+	
+    avatars = (Avatar **)calloc(nAvatars, sizeof(Avatar));
+    AMStartup();
 	return 0;
 }

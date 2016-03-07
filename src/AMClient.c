@@ -46,6 +46,8 @@ int moveCount;
 
 // ---------------- Private prototypes
 
+void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth);
+
 // ---------------- Public functions
 
 
@@ -126,7 +128,11 @@ void* newAvatar(void *newAvatar)
 			avatar->pos->x = newX;
 			avatar->pos->y = newY;
 			visitSquare(avatar->pos, avatar->AvatarId);
-			firstMove = 0;
+			
+            Amazing[newX][newY].whoLast = avatar->AvatarId;
+            Amazing[newX][newY].lastDir = avatar->face;
+
+            firstMove = 0;
 			/***********************************
 			Put algorithm here in place of next line
 			*************************************/
@@ -159,7 +165,11 @@ void* newAvatar(void *newAvatar)
 				justMoved = 0;
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
-				if (avatar->pos->x == newX && avatar->pos->y == newY) 
+				
+                Amazing[newX][newY].whoLast = avatar->AvatarId;
+                Amazing[newX][newY].lastDir = avatar->face;
+
+                if (avatar->pos->x == newX && avatar->pos->y == newY) 
 				{
 					addWall(avatar->pos, avatar->face);
 				} else {
@@ -193,17 +203,20 @@ void* newAvatar(void *newAvatar)
 					int currX = ntohl(response->avatar_turn.Pos[i].x);
 					int currY = ntohl(response->avatar_turn.Pos[i].y);
 					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, currX, currY);
-					printf("The position of avatar %d is (%d, %d)\n", i, currX, currY);
+					//printf("The position of avatar %d is (%d, %d)\n", i, currX, currY);
 				}
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
-				printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
-						moveCount, avatar->AvatarId, dir);
+				//printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
+						//moveCount, avatar->AvatarId, dir);
 				//sleep to allow time for print statments
 				usleep(10000);
 				move->avatar_move.Direction = htonl(dir);
 				avatar->face = dir;
 				send(sockfd, move, sizeof(AM_Message), 0);
+
+                drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
+
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
@@ -238,8 +251,6 @@ int chooseDir(Avatar *avatar, XYPos *rendezvous) {
 	return dir;
 }*/
 
-
-
 void AMClient()
 {
 	terminated = NULL;
@@ -256,17 +267,18 @@ void AMClient()
 	fprintf(testLog, "nAvatars: %d\n", nAvatars);
 	fprintf(testLog, "Difficulty: %d\n\n", difficulty);
 
-	pthread_t avatars[nAvatars];
+	pthread_t avatarThreads[nAvatars];
 	//Create a new thread for each avatar passing it a new Avatar pointer
 	int curr_id = 0;
 	while(curr_id < nAvatars) {
 		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
 		
-        // Make array of avatars
-        avatars[curr_id] = nextAvatar;
-
         nextAvatar->AvatarId = curr_id;
-		int iret1 = pthread_create(&(avatars[curr_id]), NULL, newAvatar, nextAvatar);
+		
+        // Make array of avatars
+        avatars[curr_id] = (Avatar *)nextAvatar;
+
+        int iret1 = pthread_create(&(avatarThreads[curr_id]), NULL, newAvatar, nextAvatar);
 		if(iret1) {
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
@@ -307,3 +319,73 @@ void AMClient()
 	fclose(testLog);
 }
 
+
+void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
+
+    char* palette[10];
+    palette[0]="\033[22;31m"; // red
+    palette[1]="\033[22;32m"; // green
+    palette[2]="\033[22;33m"; // brown
+    palette[3]="\033[22;34m"; // blue
+    palette[4]="\033[22;35m"; // magenta
+    palette[5]="\033[22;36m"; // cyan
+    palette[6]="\033[01;31m"; // light red
+    palette[7]="\033[01;32m"; // light green
+    palette[8]="\033[01;33m"; // yellow
+    palette[9]="\033[01;34m"; // light blue
+    palette[10]="\033[22;30m"; //black
+
+    printf("\033[2J\033[1;1H");
+    for (int height = 0; height <= mazeheight + 1; height++) {
+        for (int width = 0; width <= mazewidth + 1; width++) {
+            
+            // Print border of the maze
+            if (width == 0 || height == 0 || width == mazewidth + 1 || height == mazeheight + 1) {
+                printf("%s+ ", palette[10]);
+                continue;
+            }
+
+            // Print rendezvous point
+            if(width==rendezvous->x && height==rendezvous->y){
+                printf("%sx ", palette[5]);
+                continue;
+            }
+
+            // Get current node and skip if unvisited
+            MazeNode *currNode = &maze[width-1][height-1];
+            if(currNode->whoLast==-1){
+                printf("  ");
+                continue;
+            }
+
+            Avatar *currAv = avatars[currNode->whoLast];
+            char *arrow = calloc(7, sizeof(char));
+
+            if(currAv->pos->x == width-1 && currAv->pos->y == height-1){
+                arrow = "\u2605";
+            }
+
+            else if (currNode->lastDir == 0) {
+                arrow = "\u2190";
+            }
+            else if (currNode->lastDir == 1) {
+                arrow = "\u2191";
+            }
+            else if (currNode->lastDir == 2) {
+                arrow = "\u2193";
+            }
+            else if (currNode->lastDir == 3) {
+                arrow = "\u2192";
+            }
+            else {
+                arrow = "-";
+            }
+
+            printf("%s%s ", palette[currNode->whoLast],arrow);
+
+        }
+        printf("\n\033[0m");
+    }
+    fflush(stdout);
+    usleep(200000);
+}

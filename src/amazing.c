@@ -125,6 +125,9 @@ void initializeMaze(int height, int width, int nAvatars)
             Amazing[i][j].east = 0;
             Amazing[i][j].south = 0;
             Amazing[i][j].west = 0;
+
+            Amazing[i][j].whoLast = -1;
+            Amazing[i][j].lastDir = -1;
         }
 
     createPerimeter(height, width);
