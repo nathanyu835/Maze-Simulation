@@ -109,7 +109,6 @@ void* newAvatar(void *newAvatar)
 			//Only avatar 0 will print this
 			moveCount++;
 			fprintf(testLog, "\nAll avatars successfully initialized\n");
-			printf("All avatars successfully initialized\n");
 			//calculate target in the maze
 			if (rendezvous->x == -1) {
 				int xSum = 0;
@@ -121,7 +120,6 @@ void* newAvatar(void *newAvatar)
 				rendezvous->x = xSum/nAvatars;
 				rendezvous->y = ySum/nAvatars;
 				fprintf(testLog, "The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
-				printf("The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
 			}
 			int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 			int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
@@ -130,7 +128,7 @@ void* newAvatar(void *newAvatar)
 			visitSquare(avatar->pos, avatar->AvatarId);
 			
             Amazing[newX][newY].whoLast = avatar->AvatarId;
-            Amazing[newX][newY].lastDir = avatar->face;
+            //Amazing[newX][newY].lastDir = avatar->face;
 
             firstMove = 0;
 			/***********************************
@@ -140,13 +138,9 @@ void* newAvatar(void *newAvatar)
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
 					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
-				printf("The initial position of avatar %d is (%d, %d)\n", i, 
-					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
 			}
 			int dir = getMove(avatar->pos, avatar->AvatarId);
 			fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
-						moveCount, avatar->AvatarId, dir);
-			printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 			//Send move message to the server
 			move->avatar_move.Direction = htonl(dir);
@@ -198,22 +192,20 @@ void* newAvatar(void *newAvatar)
 				//if move IS made, update visited
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
-				printf("After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
 					int currX = ntohl(response->avatar_turn.Pos[i].x);
 					int currY = ntohl(response->avatar_turn.Pos[i].y);
 					fprintf(testLog, "The position of avatar %d is (%d, %d)\n", i, currX, currY);
-					//printf("The position of avatar %d is (%d, %d)\n", i, currX, currY);
 				}
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
-				//printf("\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
-						//moveCount, avatar->AvatarId, dir);
 				//sleep to allow time for print statments
 				usleep(10000);
 				move->avatar_move.Direction = htonl(dir);
-				avatar->face = dir;
-				send(sockfd, move, sizeof(AM_Message), 0);
+
+                avatar->face = dir;
+				Amazing[avatar->pos->x][avatar->pos->y].lastDir = dir;
+                send(sockfd, move, sizeof(AM_Message), 0);
 
                 drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
 
@@ -323,7 +315,7 @@ void AMClient()
 
 void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
 
-    char* palette[10];
+    char* palette[11];
     palette[0]="\033[22;31m"; // red
     palette[1]="\033[22;32m"; // green
     palette[2]="\033[22;33m"; // brown
@@ -341,14 +333,37 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         for (int width = 0; width <= mazewidth + 1; width++) {
             
             // Print border of the maze
-            if (width == 0 || height == 0 || width == mazewidth + 1 || height == mazeheight + 1) {
-                printf("%s+ ", palette[10]);
+            if (width == 0 && height == 0){// || width == mazewidth + 1 || height == mazeheight + 1) {
+                printf("%s\u256D", palette[10]);
                 continue;
+            }
+            if (width == mazewidth + 1 && height == 0){
+                printf("%s\u2500\u256E", palette[10]);
+                continue;
+            }
+            if (width == 0 && height == mazeheight + 1){
+                printf("%s\u2570\u2500", palette[10]);
+                continue;
+            }
+            if (width == mazewidth + 1 && height == mazeheight + 1){
+                printf("%s\u256F ", palette[10]);
+                continue;
+            }
+            if(width == 0 || width == mazewidth+1){
+                printf("%s\u2502 ", palette[10]);
+                continue;
+            }
+            if(height == 0 || height == mazeheight+1){
+                printf("%s\u2500\u2500", palette[10]);
+                continue;
+            }
+            else{
+
             }
 
             // Print rendezvous point
-            if(width==rendezvous->x && height==rendezvous->y){
-                printf("%sx ", palette[5]);
+            if(width-1==rendezvous->x && height-1==rendezvous->y){
+                printf("%s\u25CE ", palette[0]);
                 continue;
             }
 
@@ -363,7 +378,7 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
             char *arrow = calloc(7, sizeof(char));
 
             if(currAv->pos->x == width-1 && currAv->pos->y == height-1){
-                arrow = "\u2605";
+                arrow = "o";//"\u2605";
             }
 
             else if (currNode->lastDir == 0) {
