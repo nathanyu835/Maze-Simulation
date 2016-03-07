@@ -212,14 +212,17 @@ void* newAvatar(void *newAvatar)
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
-			if(respType == AM_MAZE_SOLVED && avatar->AvatarId == 0) {
+			if(respType == AM_MAZE_SOLVED){ 
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
-				fprintf(testLog, "Maze completed in %d moves\n", moveCount);
-				terminated = response;
+                terminated = response;
 				break;
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
-				terminated = response;
+                if(respType == AM_AVATAR_OUT_OF_TURN )printf("avatars junked up!\n");
+                if(respType == AM_UNEXPECTED_MSG_TYPE )printf("unexpected junked up!\n");
+                if(respType == AM_UNKNOWN_MSG_TYPE)printf("unkown junked up!\n");
+				else printf("respType is %d\n", respType);
+                terminated = response;
 				sleep(100); //Do not attempt to make another move
 			}
 			//Otherwise wait and continue
@@ -286,7 +289,8 @@ void AMClient()
 	switch (ntohl(terminated->type)) {
 		case AM_MAZE_SOLVED:
 			sleep(1); //Make sure everything has been written to the logfile before exitting
-			break;
+			fprintf(testLog, "Maze completed in %d moves\n", moveCount);
+            break;
 		case AM_NO_SUCH_AVATAR | AM_ERROR_MASK:
 			fprintf(testLog, "Invalid AvatarId. Terminating program\n");
 			break;
@@ -315,25 +319,35 @@ void AMClient()
 
 void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
 
-    char* palette[11];
+    // Palette of ANSI color codes
+    char* palette[12];
     palette[0]="\033[22;31m"; // red
-    palette[1]="\033[22;32m"; // green
-    palette[2]="\033[22;33m"; // brown
-    palette[3]="\033[22;34m"; // blue
-    palette[4]="\033[22;35m"; // magenta
+    palette[1]="\033[01;35m"; // orange
+    palette[2]="\033[22;33m"; // yellow
+    palette[3]="\033[22;32m"; // green
+    palette[4]="\033[22;34m"; // blue
     palette[5]="\033[22;36m"; // cyan
-    palette[6]="\033[01;31m"; // light red
-    palette[7]="\033[01;32m"; // light green
-    palette[8]="\033[01;33m"; // yellow
-    palette[9]="\033[01;34m"; // light blue
+    palette[6]="\033[01;34m"; // light blue
+    palette[7]="\033[22;35m"; // magenta
+    palette[8]="\033[01;31m"; // light red
+    palette[9]="\033[01;32m"; // light green
     palette[10]="\033[22;30m"; //black
+    palette[11]="\033[0m"; // normal
 
+    // Clear screen and position cursor at 1,1
     printf("\033[2J\033[1;1H");
+
+    // Print color header
+    printf("%sA %sM %sA %sZ %sI %sN %sG    %sP %sR %sO %sJ %sE %sC %sT\n",
+        palette[0], palette[1], palette[2], palette[3], palette[4], palette[5], palette[6],
+        palette[7], palette[8], palette[0], palette[1], palette[2], palette[3], palette[10]);
+
+    // Print maze! Black border and colorful avatars and paths    
     for (int height = 0; height <= mazeheight + 1; height++) {
         for (int width = 0; width <= mazewidth + 1; width++) {
             
             // Print border of the maze
-            if (width == 0 && height == 0){// || width == mazewidth + 1 || height == mazeheight + 1) {
+            if (width == 0 && height == 0){
                 printf("%s\u256D", palette[10]);
                 continue;
             }
@@ -357,51 +371,50 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
                 printf("%s\u2500\u2500", palette[10]);
                 continue;
             }
-            else{
-
-            }
 
             // Print rendezvous point
             if(width-1==rendezvous->x && height-1==rendezvous->y){
-                printf("%s\u25CE ", palette[0]);
+                printf("%s\u26B7 ", palette[9]);
                 continue;
             }
 
             // Get current node and skip if unvisited
             MazeNode *currNode = &maze[width-1][height-1];
             if(currNode->whoLast==-1){
-                printf("  ");
+                printf("%s  ", palette[11]);
                 continue;
             }
 
             Avatar *currAv = avatars[currNode->whoLast];
             char *arrow = calloc(7, sizeof(char));
 
+            // Print avatar if it is in this node
             if(currAv->pos->x == width-1 && currAv->pos->y == height-1){
-                arrow = "o";//"\u2605";
+                arrow = "\u2606";
             }
 
-            else if (currNode->lastDir == 0) {
+            // Print colored paths of each avatar with arrows
+            else if (currNode->lastDir == 0) { // West
                 arrow = "\u2190";
             }
-            else if (currNode->lastDir == 1) {
+            else if (currNode->lastDir == 1) { // North
                 arrow = "\u2191";
             }
-            else if (currNode->lastDir == 2) {
+            else if (currNode->lastDir == 2) { // South
                 arrow = "\u2193";
             }
-            else if (currNode->lastDir == 3) {
+            else if (currNode->lastDir == 3) { // East
                 arrow = "\u2192";
             }
-            else {
+            else {                             // Resting
                 arrow = "-";
             }
 
-            printf("%s%s ", palette[currNode->whoLast],arrow);
-
+            printf("%s%s ", palette[currNode->whoLast], arrow);
+            //free(arrow);
         }
-        printf("\n\033[0m");
+        printf("\n%s", palette[11]);
     }
-    fflush(stdout);
-    usleep(200000);
+    //fflush(stdout);
+    usleep(10000);
 }
