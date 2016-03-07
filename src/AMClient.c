@@ -208,7 +208,6 @@ void* newAvatar(void *newAvatar)
                 send(sockfd, move, sizeof(AM_Message), 0);
 
                 drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
-
 			}
 			usleep(10000); //allow time for print statements to print in the correct order
 		} else {
@@ -218,15 +217,11 @@ void* newAvatar(void *newAvatar)
 				break;
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
-                if(respType == AM_AVATAR_OUT_OF_TURN )printf("avatars junked up!\n");
-                if(respType == AM_UNEXPECTED_MSG_TYPE )printf("unexpected junked up!\n");
-                if(respType == AM_UNKNOWN_MSG_TYPE)printf("unkown junked up!\n");
-				else printf("respType is %d\n", respType);
                 terminated = response;
 				sleep(100); //Do not attempt to make another move
 			}
 			//Otherwise wait and continue
-			sleep(1);
+			usleep(100000);
 		}
 
 	}
@@ -381,7 +376,7 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
             // Get current node and skip if unvisited
             MazeNode *currNode = &maze[width-1][height-1];
             if(currNode->whoLast==-1){
-                printf("%s  ", palette[11]);
+                printf("  ");
                 continue;
             }
 
@@ -415,6 +410,4 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         }
         printf("\n%s", palette[11]);
     }
-    //fflush(stdout);
-    usleep(10000);
 }
