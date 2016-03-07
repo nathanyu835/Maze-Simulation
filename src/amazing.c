@@ -41,71 +41,6 @@
 // ---------------- Private variables
 
 // ---------------- Private prototypes
-/*void Traverse(Avatar *curr);
-void initializeMaze(int height, int width, int nAvatars);
-void createPerimeter(int height, int width);
-void getRendezvous(Avatar *avatar);
-int getManhattan(XYPos *start, XYPos *end);
-int getDirection(XYPos *start, XYPos *end);*/
-
-/* ========================================================================== */
-/*
-int main(int argc, char *argv[])
-{
-    // check command line arguments
-    if (argc != 4)
-    {
-        printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
-        exit(1);
-    }
-
-    hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
-    strcpy(hostname, argv[3]);
-    nAvatars = atoi(argv[1]);
-    difficulty = atoi(argv[2]);
-    int height = difficulty;
-    int width = difficulty;
-
-    initializeMaze(height, width, nAvatars);
-
-    //CODE FOR TESTING MAZE INITIALIZATION
-    for(int i = 0; i < width; i++)
-        for(int j = 0; j < height; j++)
-        {
-            printf("index is %d,%d: ", i,j); 
-            printf("north is: %d, " , Amazing[i][j].north);
-            printf("west is: %d, " , Amazing[i][j].west);
-            printf("south is: %d, " , Amazing[i][j].south);
-            printf("east is: %d\n" , Amazing[i][j].east);
-        }
-    
-}*/
-
-//PSEUDOCODE
-/*
-while(!sameLocation())
-{
-    Traverse(); //use int and directionsTried to optimize run time
-    Avatar->Location->AvatarInfo->int++; //block of dead ends (int = 2)
-    if(!direction)
-        add direction to AvatarInfo->directionsTried
-}
-
-int sameLocation()
-{
-    for(int i = 0; i < AvatarCount; i++)
-    {
-        if(Avatar->location != (Avatar+1)->Location)
-            return 0;
-    }
-    return 1;
-}
-*/
-
-
-
-// Basic pseudocode for our traversal: Find target location based on average location of Avatars.
-// We then find the Manhattan Distance between each avatar and the location, which is the sum of the ABS of the x distance and y distance to location.
 
 void initializeMaze(int height, int width, int nAvatars)
 {
@@ -215,9 +150,6 @@ int getMove(XYPos *currPos, int i)
         return productive;
         //The function calling this method needs to attempt this move
         //if it fails, update the walls and then call the function again until -1 is returned
-
-    printf("No unvisited paths exist!\n");
-
     if(Amazing[currPos->x][currPos->y].west == 0)
     {
         addDeadEnd(currPos, M_WEST);

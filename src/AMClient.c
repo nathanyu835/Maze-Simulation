@@ -257,7 +257,8 @@ void AMClient()
 	moveCount = 0;
 
 	char logPath[200];
-	sprintf(logPath,"./testing_log_nAvatars_%d_Difficulty_%d", nAvatars, difficulty);
+	sprintf(logPath,"./testing/testing_log_nAvatars_%d_Difficulty_%d", nAvatars, difficulty);
+	printf("logpath is: %s\n", logPath);
 	testLog = fopen(logPath, "w+");
 	if(testLog == NULL) {
 		printf("Error creating test log file: %s\n", logPath);
