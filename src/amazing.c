@@ -96,7 +96,7 @@ void freeMaze()
         }
     for (int i = 0; i < mazeWidth; i++)
         free(Amazing[i]);
-    //free(Amazing);
+    free(Amazing);
 }
 
 /* This method  */
