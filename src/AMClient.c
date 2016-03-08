@@ -251,16 +251,17 @@ void AMClient()
 	while(curr_id < nAvatars) {
 		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
 		
-        nextAvatar->AvatarId = curr_id;
+       	 	nextAvatar->AvatarId = curr_id;
 		
-        // Make array of avatars
-        avatars[curr_id] = (Avatar *)nextAvatar;
+        	// Make array of avatars
+        	avatars[curr_id] = (Avatar *)nextAvatar;
 
-        int iret1 = pthread_create(&(avatarThreads[curr_id]), NULL, newAvatar, nextAvatar);
+        	int iret1 = pthread_create(&(avatarThreads[curr_id]), NULL, newAvatar, nextAvatar);
 		if(iret1) {
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
 		}
+		pthread_detach(avatarThreads[curr_id]);
 		usleep(10000);
 		curr_id++;
 	}
@@ -300,6 +301,8 @@ void AMClient()
 		free(avatars[i]);
 	}
 	free(avatars);
+	free(rendezvous);
+	free(hostname);
 	freeMaze();
 	fclose(testLog);
 }
@@ -378,7 +381,7 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
 
             // Print avatar if it is in this node
             if(currAv->pos->x == width-1 && currAv->pos->y == height-1){
-                strcpy(arrow,"\u2606");
+                strcpy(arrow,"\u2606") ;
             }
 
             // Print colored paths of each avatar with arrows
