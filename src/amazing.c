@@ -94,8 +94,7 @@ void freeMaze()
         for(int j = 0; j < mazeHeight; j++) {
             free(Amazing[i][j].visited);
         }
-    for (int i = 0; i < mazeWidth; i++)
-        free(Amazing[i]);
+    free(*Amazing);
     free(Amazing);
 }
 
