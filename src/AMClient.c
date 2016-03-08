@@ -60,6 +60,7 @@ void* newAvatar(void *newAvatar)
 	pos->y = -1;
 	avatar->pos = pos;
 	avatar->solved = 0;
+	free(pos);
 
 	//create a new socket for this avatar
 	int sockfd;
