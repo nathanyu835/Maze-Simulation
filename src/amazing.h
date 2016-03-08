@@ -160,9 +160,7 @@ typedef struct AM_Message
 // ---------------- Public Variables
 MazeNode **Amazing;
 int nAvatars, difficulty;
-
 Avatar **avatars;
-
 char *hostname;
 XYPos *rendezvous;
 int mazePort;
