@@ -1,0 +1,40 @@
+Testing file for Amazing Project
+nAvatars: 2
+Difficulty: 2
+
+Avatar 0 has been created
+Avatar 1 has been created
+
+All avatars successfully initialized
+The target position is (3, 8)
+
+The initial position of avatar 0 is (4, 9)
+The initial position of avatar 1 is (3, 7)
+
+Turn 1:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (3, 7)
+
+Turn 2:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (3, 8)
+
+Turn 3:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 9)
+The position of avatar 1 is (3, 8)
+
+Turn 4:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (3, 9)
+The position of avatar 1 is (3, 8)
+
+Turn 5:
+It is Avatar 0's turn, attempted move: 1
+Maze completed in 5 moves
