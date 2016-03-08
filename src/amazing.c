@@ -6,15 +6,15 @@
  * Author: Nathan Yu, Ian Delaney, Stephanie Guo
  * Date: February 27, 2015
  *
- * Input:
+ * Input: [NUM_AVATARS] [NUM_DIFFICULTY] [HOSTNAME]
  *
- * Command line options: 
+ * Output: graphical representation of maze as avatars traverse it - printed to stdout
+ *         logfiles in testing directory of root directory
  *
- * Output:
+ * Error Conditions: invalid arguments at command line (see README)
  *
- * Error Conditions:
- *
- * Special Considerations:
+ * Special Considerations: amazing must be run with the flume.cs.dartmouth.edu server
+ *                         using the [HOSTNAME] value 129.170.214.115
  *
  */
 /* ========================================================================== */
@@ -42,16 +42,28 @@
 
 // ---------------- Private prototypes
 
-/* This method initializes out maze Amazing, which will be a 2D array of MazeNodes. For each MazeNode, the four walls will be initially
- * set to 0, and will be updated to 1 as walls are discovered. We also initialize a visited list for each MazeNode that will keep track
- * of how many times each avatar has visited a location in the maze. This method also calls createPerimeter */
+/*
+ * initializeMaze - creates and initializes the maze Amazing
+ *                  sets walls to 0, and and updates to 1 as they are discovered.
+ *                  creates a 'visited' list for each MazeNode that will keep track of
+ *                      how many times each avatar has visited a location in the maze.
+ *                  calls createPerimeter
+ *
+ * @height: height of the maze
+ * @width: width of the maze
+ * @nAvatars: number of avatars in the maze
+ *
+ */
 void initializeMaze(int height, int width, int nAvatars)
 {
     MazeNode *temp = (MazeNode*)calloc(width*height, sizeof(MazeNode));
-    Amazing = (MazeNode**)calloc(width, sizeof(MazeNode*));
+    
+    // Amazing is a 2D array of MazeNodes
+    Amazing = (MazeNode**)calloc(width, sizeof(MazeNode));
     for (int i = 0; i < width; i++)
         Amazing[i] = temp + i*height;
 
+    // Populate Amazing with unvisited MazeNodes with blank walls
     for(int i = 0; i < width; i++)
         for(int j = 0; j < height; j++)
         {
@@ -67,11 +79,18 @@ void initializeMaze(int height, int width, int nAvatars)
             Amazing[i][j].whoLast = -1;
             Amazing[i][j].lastDir = -1;
         }
-
+    // Set the walls of each MazeNode in Amazing
     createPerimeter(height, width);
 }
 
-/* This method creates the walls on the wedge of the maze utilizing the height and width of the maze */
+/*
+ * createPerimeter - creates the walls on the edge of the maze
+ *                   using the height and width of the maze 
+ *
+ * @height: height of the maze
+ * @width: width of the maze
+ *
+ */
 void createPerimeter(int height, int width)
 {
     for(int i = 0; i < width; i++)
@@ -87,27 +106,46 @@ void createPerimeter(int height, int width)
     }
 }
 
-/* This method frees all visited lists in MazeNodes, MazeNodes and the Amazing maze */
+/* 
+ * freeMaze - frees all visited lists in MazeNodes, MazeNodes and the Amazing maze
+ *
+ * */
 void freeMaze()
 {
     for(int i = 0; i < mazeWidth; i++)
         for(int j = 0; j < mazeHeight; j++) {
             free(Amazing[i][j].visited);
+            //free(&Amazing[i][j]);
         }
-    for (int i = 0; i < mazeWidth; i++)
-        free(Amazing[i]);
-    //free(Amazing);
+    //for (int i = 0; i < mazeWidth; i++)
+    free(*Amazing);
+    free(Amazing);
 }
 
-/* This method  */
+/*
+ * visitSquare - increases counter on visits to the given MazeNode
+ * 
+ * @currPos: XYPos of the given MazeNode
+ * @i: avatar id of the avatar whose visits counter is being incremented
+ *
+ */
 void visitSquare(XYPos *currPos, int i)
 {
     Amazing[currPos->x][currPos->y].visited[i]++;
 }
 
-/* This method checks for a path that decreases the MD between currPos and renedezvous, prioritizing a decrease in abs(y) over a decrease in abs(x).
- * If no moves decreade the MD, this method prioritizes traversing MazeNodes that have not yet been visited.It returns the direction of a potential 
- * productive move, -1 if one doesn't exist. */
+/*
+ * isProductive - checks for a path that decreases the MD between currPos and rendezvous,
+ *                prioritizing a decrease in abs(y) over a decrease in abs(x).
+ *                If no moves decreade the MD, this method prioritizes traversing MazeNodes
+ *                that have not yet been visited.
+ *
+ * @currPos: XYPos of the given MazeNode
+ * @i: avatar id of the avatar currently moving
+ *
+ * Returns: int direction of a potential productive move, -1 if one doesn't exist.
+ *
+ */
 int isProductive(XYPos *currPos, int i)
 {
     //int currMD = getManhattan(currPos, rendezvous);
@@ -135,7 +173,9 @@ int isProductive(XYPos *currPos, int i)
             return M_WEST;
     }
     if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y+1].visited[i] == 0)
+    {
         return M_SOUTH;
+    }
     if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y-1].visited[i] == 0)
         return M_NORTH;
     if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x+1][currPos->y].visited[i] == 0)
@@ -145,9 +185,17 @@ int isProductive(XYPos *currPos, int i)
     return -1;
 }
 
-/* This method is what is called to return a direction to the avatar making a move. First we check for a productive path.
- * If one doesn't exist, we know that every possibile move have been visited once by the avatar. We then arbitrarily choose
- * a direction to traverse, and the we block off the twice visited MazeNode by calling addDeadEnd.*/
+/*
+ * getMove - Determines direction that avatar moves in by checking for a productive path.
+ *           If one doesn't exist, we know that every possible move have been visited once
+ *           by the avatar. We then arbitrarily choose a direction to traverse, and block off
+ *           the twice visited MazeNode by calling addDeadEnd.
+ *
+ * @currPos: XYPos of the given MazeNode
+ * @i: avatar id of the avatar currently moving
+ *
+ * Return: int direction 0, 1, 2, 3, 8 for avatar to move in
+ */
 int getMove(XYPos *currPos, int i)
 {
     if(currPos->x == rendezvous->x && currPos->y == rendezvous->y)
@@ -180,7 +228,15 @@ int getMove(XYPos *currPos, int i)
     return 0;
 }
 
-// This method returns the direction an avatar moved by taking in its previous location and its current location
+/*
+ * getDirection - finds direction an avatar moved by taking
+ *                its previous location and its current location
+ * @start: XYPos indicating the starting position of the avatar
+ * @end: XYPos indicating the ending position of the avatar
+ *
+ * Return: int direction that the avatar has just moved in
+ *
+ */
 int getDirection(XYPos *start, XYPos *end)
 {
     printf("Direction from (%d,%d) to (%d, %d)", start->x, start->y, end->x, end->y);  
@@ -205,7 +261,15 @@ int getDirection(XYPos *start, XYPos *end)
     return M_NULL_MOVE;
 }
 
-// This method calculates the MD between two nodes
+/* 
+ * getManhattan - calculates the MD (Manhattan Distance) between two nodes
+ * 
+ * @start: XYPos indicating the starting position of the avatar
+ * @end: XYPos indicating the ending position of the avatar
+ *
+ * Return: int representing MD between two MazeNodes
+ *
+ */
 int getManhattan(XYPos *start, XYPos *end)
 {
     int xManhattan = abs(end->x - start->x);
@@ -214,7 +278,13 @@ int getManhattan(XYPos *start, XYPos *end)
     return xManhattan + yManhattan;
 }
 
-/* This method will add a one-way wall for MazeNodes that are twice visited. */
+/*
+ * addDeadEnd - adds a one-way wall for MazeNodes that are twice visited
+ *
+ * @pos: XYPos that holds position of the given MazeNode
+ * @face: direction that the current avatar is facing
+ *
+ */
 void addDeadEnd(XYPos *pos, int face)
 {
     int x = pos->x;
@@ -242,7 +312,13 @@ void addDeadEnd(XYPos *pos, int face)
     }
 }
 
-/* This method will update the Amazing maze by adding a wall into the maze whenever onne is discovered */
+/*
+ * addWall - updates the Amazing maze by adding new walls into the maze
+ *
+ * @pos: XYPos of MazeNode containing the current wall
+ * @face: int direction faced by the current avatar
+ *
+ */
 void addWall(XYPos *pos, int face)
 {
     int x = pos->x;
