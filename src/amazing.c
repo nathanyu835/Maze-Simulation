@@ -42,12 +42,16 @@
 
 // ---------------- Private prototypes
 
+/* This method initializes out maze Amazing, which will be a 2D array of MazeNodes. For each MazeNode, the four walls will be initially
+ * set to 0, and will be updated to 1 as walls are discovered. We also initialize a visited list for each MazeNode that will keep track
+ * of how many times each avatar has visited a location in the maze. This method also calls createPerimeter */
 void initializeMaze(int height, int width, int nAvatars)
 {
     MazeNode *temp = (MazeNode*)calloc(width*height, sizeof(MazeNode));
     Amazing = (MazeNode**)calloc(width, sizeof(MazeNode*));
     for (int i = 0; i < width; i++)
         Amazing[i] = temp + i*height;
+
     for(int i = 0; i < width; i++)
         for(int j = 0; j < height; j++)
         {
@@ -60,7 +64,6 @@ void initializeMaze(int height, int width, int nAvatars)
             Amazing[i][j].east = 0;
             Amazing[i][j].south = 0;
             Amazing[i][j].west = 0;
-
             Amazing[i][j].whoLast = -1;
             Amazing[i][j].lastDir = -1;
         }
@@ -68,6 +71,7 @@ void initializeMaze(int height, int width, int nAvatars)
     createPerimeter(height, width);
 }
 
+/* This method creates the walls on the wedge of the maze utilizing the height and width of the maze */
 void createPerimeter(int height, int width)
 {
     for(int i = 0; i < width; i++)
@@ -83,35 +87,39 @@ void createPerimeter(int height, int width)
     }
 }
 
+/* This method frees all visited lists in MazeNodes, MazeNodes and the Amazing maze */
 void freeMaze()
 {
-    for(int i = 0; i < width; i++)
-        for(int j = 0; j < height; j++)
+    for(int i = 0; i < mazeWidth; i++)
+        for(int j = 0; j < mazeHeight; j++)
             free(Amazing[i][j].visited);
     free(Amazing);
 }
 
-void getRendezvous(Avatar *avatar)
+/* This method acquires a centroid based on the intial locations of each avatar */
+/*void getRendezvous(AvatarList *avatar)
 {
     int xSum = 0, ySum = 0;
 
     for(int i = 0; i < nAvatars; i++)
     {
-        xSum += avatar->pos->x;
-        ySum += avatar->pos->y;
+        xSum += avatar[i]->pos->x;
+        ySum += avatar[i]->pos->y;
     }
 
     rendezvous->x = xSum/nAvatars;
     rendezvous->y = ySum/nAvatars;
-}
+}*/
 
+/* This method  */
 void visitSquare(XYPos *currPos, int i)
 {
     Amazing[currPos->x][currPos->y].visited[i]++;
 }
 
-//checks for a path that decreases the MD between currPos and renedezvous, prioritizing a decrease in abs(y) over a decrease in abs(x)
-//returns the direction of a potential productive move, -1 if one doesn't exist
+/* This method checks for a path that decreases the MD between currPos and renedezvous, prioritizing a decrease in abs(y) over a decrease in abs(x).
+ * If no moves decreade the MD, this method prioritizes traversing MazeNodes that have not yet been visited.It returns the direction of a potential 
+ * productive move, -1 if one doesn't exist. */
 int isProductive(XYPos *currPos, int i)
 {
     //int currMD = getManhattan(currPos, rendezvous);
@@ -149,6 +157,9 @@ int isProductive(XYPos *currPos, int i)
     return -1;
 }
 
+/* This method is what is called to return a direction to the avatar making a move. First we check for a productive path.
+ * If one doesn't exist, we know that every possibile move have been visited once by the avatar. We then arbitrarily choose
+ * a direction to traverse, and the we block off the twice visited MazeNode by calling addDeadEnd.*/
 int getMove(XYPos *currPos, int i)
 {
     if(currPos->x == rendezvous->x && currPos->y == rendezvous->y)
@@ -156,8 +167,7 @@ int getMove(XYPos *currPos, int i)
     int productive = isProductive(currPos, i);
     if(productive != -1)
         return productive;
-        //The function calling this method needs to attempt this move
-        //if it fails, update the walls and then call the function again until -1 is returned
+
     if(Amazing[currPos->x][currPos->y].west == 0)
     {
         addDeadEnd(currPos, M_WEST);
@@ -182,6 +192,7 @@ int getMove(XYPos *currPos, int i)
     return 0;
 }
 
+// This method returns the direction an avatar moved by taking in its previous location and its current location
 int getDirection(XYPos *start, XYPos *end)
 {
     printf("Direction from (%d,%d) to (%d, %d)", start->x, start->y, end->x, end->y);  
@@ -206,6 +217,7 @@ int getDirection(XYPos *start, XYPos *end)
     return M_NULL_MOVE;
 }
 
+// This method calculates the MD between two nodes
 int getManhattan(XYPos *start, XYPos *end)
 {
     int xManhattan = abs(end->x - start->x);
@@ -214,6 +226,7 @@ int getManhattan(XYPos *start, XYPos *end)
     return xManhattan + yManhattan;
 }
 
+/* This method will add a one-way wall for MazeNodes that are twice visited. */
 void addDeadEnd(XYPos *pos, int face)
 {
     int x = pos->x;
@@ -241,6 +254,7 @@ void addDeadEnd(XYPos *pos, int face)
     }
 }
 
+/* This method will update the Amazing maze by adding a wall into the maze whenever onne is discovered */
 void addWall(XYPos *pos, int face)
 {
     int x = pos->x;
