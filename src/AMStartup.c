@@ -86,12 +86,12 @@ void AMStartup()
 		return;
 	}
 	//Set maze variables
-	mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
-	mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
+	height = ntohl(AM_INIT_resp->init_ok.MazeHeight);
+	width = ntohl(AM_INIT_resp->init_ok.MazeWidth);
 	mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
 
 	//Create maze
-	initializeMaze(mazeHeight, mazeWidth, nAvatars);
+	initializeMaze(height, width, nAvatars);
 	printf("Maze initialized!\n");
 	AMClient();
 }

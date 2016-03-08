@@ -60,7 +60,6 @@ void* newAvatar(void *newAvatar)
 	pos->y = -1;
 	avatar->pos = pos;
 	avatar->solved = 0;
-	free(pos);
 
 	//create a new socket for this avatar
 	int sockfd;
@@ -208,7 +207,7 @@ void* newAvatar(void *newAvatar)
 				Amazing[avatar->pos->x][avatar->pos->y].lastDir = dir;
                 send(sockfd, move, sizeof(AM_Message), 0);
 
-                drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
+                drawMaze(Amazing, avatars, height, width);
 
 			}
 			usleep(200); //allow time for print statements to print in the correct order
