@@ -62,24 +62,15 @@
 // ---------------- Structures/Types
 
 
+/* MazeNode struct */
 typedef struct MazeNode
 {
     int *visited; // stores the number of times a location has been visited, index of visited represents the avatar
-    //Since 1 is declared here, remember to use: ptr = malloc(sizeof(struct MazeNode) + (n-1));
     int north, east, south, west; // keeps track of invalid directions
     int whoLast;    // keeps track of which avatar was here last
     int lastDir;    // keep track of last direction faced
 
 } MazeNode;
-
-/*
-typedef struct Maze
-{
-    MazeNode **data; // stores a 2D array of MazeNodes
-} Maze;
-
-Maze *Amazing;
-*/
 
 /* XY-coordinate position */
 typedef struct XYPos
