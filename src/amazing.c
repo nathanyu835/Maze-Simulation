@@ -66,6 +66,7 @@ void initializeMaze(int height, int width, int nAvatars)
         }
 
     createPerimeter(height, width);
+    free(temp);
 }
 
 void createPerimeter(int height, int width)
@@ -81,6 +82,14 @@ void createPerimeter(int height, int width)
         Amazing[0][j].west = 1;
         Amazing[width-1][j].east = 1;
     }
+}
+
+void freeMaze()
+{
+    for(int i = 0; i < width; i++)
+        for(int j = 0; j < height; j++)
+            free(Amazing[i][j].visited);
+    free(Amazing);
 }
 
 void getRendezvous(Avatar *avatar)

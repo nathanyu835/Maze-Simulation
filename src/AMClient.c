@@ -59,6 +59,7 @@ void* newAvatar(void *newAvatar)
 	pos->x = -1;
 	pos->y = -1;
 	avatar->pos = pos;
+	avatar->solved = 0;
 
 	//create a new socket for this avatar
 	int sockfd;
@@ -181,15 +182,14 @@ void* newAvatar(void *newAvatar)
 				firstMove = 0;
 			}
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
-				usleep(10000); //give qanother avatar time to update the maze
+				usleep(200); //give qanother avatar time to update the maze
 				moveCount++;
 				justMoved = 1;
 				/***********************************
 				Put algorithm here in place of next line
 				*************************************/
 				int dir = getMove(avatar->pos, avatar->AvatarId); 
-				//if move is not made, addWalls and call getDirection again
-				//if move IS made, update visited
+
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
@@ -200,7 +200,7 @@ void* newAvatar(void *newAvatar)
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 				//sleep to allow time for print statments
-				usleep(10000);
+				usleep(200);
 				move->avatar_move.Direction = htonl(dir);
 
                 avatar->face = dir;
@@ -210,7 +210,7 @@ void* newAvatar(void *newAvatar)
                 drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
 
 			}
-			usleep(10000); //allow time for print statements to print in the correct order
+			usleep(200); //allow time for print statements to print in the correct order
 		} else {
 			if(respType == AM_MAZE_SOLVED && avatar->AvatarId == 0) {
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
@@ -220,7 +220,7 @@ void* newAvatar(void *newAvatar)
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
 				terminated = response;
-				sleep(100); //Do not attempt to make another move
+				sleep(50); //Do not attempt to make another move
 			}
 			//Otherwise wait and continue
 			sleep(1);
@@ -229,19 +229,6 @@ void* newAvatar(void *newAvatar)
 	}
 	return NULL;
 }
-
-/*
-int chooseDir(Avatar *avatar, XYPos *rendezvous) {
-	int dir = rand() % 4;
-	int ax = avatar->pos->x;
-	int ay = avatar->pos->y;
-	int rx = rendezvous->x;
-	int ry = rendezvous->y;
-	if(ax == rx && ay == ry) {
-		return M_NULL_MOVE;
-	}
-	return dir;
-}*/
 
 void AMClient()
 {
@@ -276,11 +263,11 @@ void AMClient()
 			fprintf(stderr,"Cannot create thread, rc=%d\n", iret1);
 			return;
 		}
-		usleep(10000);
+		usleep(50);
 		curr_id++;
 	}
 	while (terminated == NULL) {
-		usleep(10000);
+		usleep(50);
 	}
 	//The maze has terminated, check the last message for exit status
 	switch (ntohl(terminated->type)) {
@@ -403,5 +390,5 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         printf("\n\033[0m");
     }
     fflush(stdout);
-    usleep(200000);
+    usleep(2000);
 }
