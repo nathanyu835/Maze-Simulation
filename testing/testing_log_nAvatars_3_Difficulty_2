@@ -1,0 +1,3245 @@
+Testing file for Amazing Project
+nAvatars: 3
+Difficulty: 2
+
+Avatar 0 has been created
+Avatar 1 has been created
+Avatar 2 has been created
+
+All avatars successfully initialized
+The target position is (5, 5)
+
+The initial position of avatar 0 is (4, 9)
+The initial position of avatar 1 is (3, 7)
+The initial position of avatar 2 is (9, 1)
+
+Turn 1:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (3, 7)
+The position of avatar 2 is (9, 1)
+
+Turn 2:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 1)
+
+Turn 3:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 2)
+
+Turn 4:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 2)
+
+Turn 5:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 2)
+
+Turn 6:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 7:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (3, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 8:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 9:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 10:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 11:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 12:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 13:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 14:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 15:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 16:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (4, 6)
+The position of avatar 2 is (9, 3)
+
+Turn 17:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 3)
+
+Turn 18:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 2)
+
+Turn 19:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 2)
+
+Turn 20:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 2)
+
+Turn 21:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 2)
+
+Turn 22:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 7)
+The position of avatar 2 is (9, 2)
+
+Turn 23:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 8)
+The position of avatar 2 is (9, 2)
+
+Turn 24:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 8)
+The position of avatar 2 is (10, 2)
+
+Turn 25:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (4, 8)
+The position of avatar 2 is (10, 2)
+
+Turn 26:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 2)
+
+Turn 27:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 28:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 29:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 30:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 8)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 31:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (5, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 32:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (6, 8)
+The position of avatar 2 is (10, 3)
+
+Turn 33:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (6, 8)
+The position of avatar 2 is (11, 3)
+
+Turn 34:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (6, 8)
+The position of avatar 2 is (11, 3)
+
+Turn 35:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 3)
+
+Turn 36:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 4)
+
+Turn 37:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 4)
+
+Turn 38:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 4)
+
+Turn 39:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 40:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 41:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 42:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 43:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (6, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 44:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (7, 7)
+The position of avatar 2 is (11, 5)
+
+Turn 45:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 9)
+The position of avatar 1 is (7, 7)
+The position of avatar 2 is (11, 6)
+
+Turn 46:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 9)
+The position of avatar 1 is (7, 7)
+The position of avatar 2 is (11, 6)
+
+Turn 47:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 9)
+The position of avatar 1 is (7, 6)
+The position of avatar 2 is (11, 6)
+
+Turn 48:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 9)
+The position of avatar 1 is (7, 6)
+The position of avatar 2 is (11, 6)
+
+Turn 49:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 8)
+The position of avatar 1 is (7, 6)
+The position of avatar 2 is (11, 6)
+
+Turn 50:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 8)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 6)
+
+Turn 51:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 8)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 52:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 7)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 53:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 7)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 54:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 7)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 55:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 6)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 56:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 6)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 57:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 6)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 58:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 6)
+The position of avatar 1 is (7, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 59:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 6)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 7)
+
+Turn 60:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 6)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 6)
+
+Turn 61:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 7)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 6)
+
+Turn 62:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 7)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 6)
+
+Turn 63:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 7)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 5)
+
+Turn 64:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 8)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 5)
+
+Turn 65:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 8)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 5)
+
+Turn 66:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 8)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 4)
+
+Turn 67:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 8)
+The position of avatar 1 is (8, 5)
+The position of avatar 2 is (11, 4)
+
+Turn 68:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 8)
+The position of avatar 1 is (9, 5)
+The position of avatar 2 is (11, 4)
+
+Turn 69:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 8)
+The position of avatar 1 is (9, 5)
+The position of avatar 2 is (11, 4)
+
+Turn 70:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 8)
+The position of avatar 1 is (9, 5)
+The position of avatar 2 is (11, 4)
+
+Turn 71:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 8)
+The position of avatar 1 is (9, 6)
+The position of avatar 2 is (11, 4)
+
+Turn 72:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 8)
+The position of avatar 1 is (9, 6)
+The position of avatar 2 is (11, 3)
+
+Turn 73:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 7)
+The position of avatar 1 is (9, 6)
+The position of avatar 2 is (11, 3)
+
+Turn 74:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 7)
+The position of avatar 1 is (8, 6)
+The position of avatar 2 is (11, 3)
+
+Turn 75:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 7)
+The position of avatar 1 is (8, 6)
+The position of avatar 2 is (11, 2)
+
+Turn 76:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (7, 7)
+The position of avatar 1 is (8, 6)
+The position of avatar 2 is (11, 2)
+
+Turn 77:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 7)
+The position of avatar 1 is (8, 7)
+The position of avatar 2 is (11, 2)
+
+Turn 78:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 7)
+The position of avatar 1 is (8, 7)
+The position of avatar 2 is (11, 1)
+
+Turn 79:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 6)
+The position of avatar 1 is (8, 7)
+The position of avatar 2 is (11, 1)
+
+Turn 80:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 6)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (11, 1)
+
+Turn 81:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 6)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (10, 1)
+
+Turn 82:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 5)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (10, 1)
+
+Turn 83:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 5)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (10, 1)
+
+Turn 84:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 5)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (10, 0)
+
+Turn 85:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 5)
+The position of avatar 1 is (8, 8)
+The position of avatar 2 is (10, 0)
+
+Turn 86:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 5)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (10, 0)
+
+Turn 87:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 5)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (9, 0)
+
+Turn 88:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (9, 5)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (9, 0)
+
+Turn 89:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (9, 5)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (9, 0)
+
+Turn 90:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (9, 5)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (8, 0)
+
+Turn 91:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (9, 6)
+The position of avatar 1 is (9, 8)
+The position of avatar 2 is (8, 0)
+
+Turn 92:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (9, 6)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 0)
+
+Turn 93:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (9, 6)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 1)
+
+Turn 94:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 6)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 1)
+
+Turn 95:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 6)
+The position of avatar 1 is (8, 9)
+The position of avatar 2 is (8, 1)
+
+Turn 96:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 6)
+The position of avatar 1 is (8, 9)
+The position of avatar 2 is (8, 2)
+
+Turn 97:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 7)
+The position of avatar 1 is (8, 9)
+The position of avatar 2 is (8, 2)
+
+Turn 98:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 7)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 2)
+
+Turn 99:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 7)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 100:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 8)
+The position of avatar 1 is (9, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 101:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 8)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 102:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 8)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 103:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (9, 8)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 104:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (9, 8)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (8, 3)
+
+Turn 105:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (9, 8)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (7, 3)
+
+Turn 106:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (9, 9)
+The position of avatar 1 is (10, 9)
+The position of avatar 2 is (7, 3)
+
+Turn 107:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (9, 9)
+The position of avatar 1 is (11, 9)
+The position of avatar 2 is (7, 3)
+
+Turn 108:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (9, 9)
+The position of avatar 1 is (11, 9)
+The position of avatar 2 is (7, 4)
+
+Turn 109:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (10, 9)
+The position of avatar 1 is (11, 9)
+The position of avatar 2 is (7, 4)
+
+Turn 110:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 9)
+The position of avatar 1 is (11, 8)
+The position of avatar 2 is (7, 4)
+
+Turn 111:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (10, 9)
+The position of avatar 1 is (11, 8)
+The position of avatar 2 is (7, 4)
+
+Turn 112:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (11, 9)
+The position of avatar 1 is (11, 8)
+The position of avatar 2 is (7, 4)
+
+Turn 113:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (11, 9)
+The position of avatar 1 is (10, 8)
+The position of avatar 2 is (7, 4)
+
+Turn 114:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (11, 9)
+The position of avatar 1 is (10, 8)
+The position of avatar 2 is (8, 4)
+
+Turn 115:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (11, 8)
+The position of avatar 1 is (10, 8)
+The position of avatar 2 is (8, 4)
+
+Turn 116:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (11, 8)
+The position of avatar 1 is (10, 7)
+The position of avatar 2 is (8, 4)
+
+Turn 117:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (11, 8)
+The position of avatar 1 is (10, 7)
+The position of avatar 2 is (9, 4)
+
+Turn 118:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (10, 8)
+The position of avatar 1 is (10, 7)
+The position of avatar 2 is (9, 4)
+
+Turn 119:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 8)
+The position of avatar 1 is (10, 6)
+The position of avatar 2 is (9, 4)
+
+Turn 120:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (10, 8)
+The position of avatar 1 is (10, 6)
+The position of avatar 2 is (9, 4)
+
+Turn 121:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 7)
+The position of avatar 1 is (10, 6)
+The position of avatar 2 is (9, 4)
+
+Turn 122:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 7)
+The position of avatar 1 is (10, 5)
+The position of avatar 2 is (9, 4)
+
+Turn 123:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (10, 7)
+The position of avatar 1 is (10, 5)
+The position of avatar 2 is (10, 4)
+
+Turn 124:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 6)
+The position of avatar 1 is (10, 5)
+The position of avatar 2 is (10, 4)
+
+Turn 125:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 6)
+The position of avatar 1 is (10, 4)
+The position of avatar 2 is (10, 4)
+
+Turn 126:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (10, 6)
+The position of avatar 1 is (10, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 127:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 5)
+The position of avatar 1 is (10, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 128:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (10, 5)
+The position of avatar 1 is (9, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 129:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (10, 5)
+The position of avatar 1 is (9, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 130:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (10, 4)
+The position of avatar 1 is (9, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 131:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (10, 4)
+The position of avatar 1 is (8, 4)
+The position of avatar 2 is (10, 5)
+
+Turn 132:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (10, 4)
+The position of avatar 1 is (8, 4)
+The position of avatar 2 is (10, 6)
+
+Turn 133:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (9, 4)
+The position of avatar 1 is (8, 4)
+The position of avatar 2 is (10, 6)
+
+Turn 134:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (9, 4)
+The position of avatar 1 is (7, 4)
+The position of avatar 2 is (10, 6)
+
+Turn 135:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (9, 4)
+The position of avatar 1 is (7, 4)
+The position of avatar 2 is (10, 6)
+
+Turn 136:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 4)
+The position of avatar 1 is (7, 4)
+The position of avatar 2 is (10, 6)
+
+Turn 137:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 4)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (10, 6)
+
+Turn 138:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 4)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (10, 7)
+
+Turn 139:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 4)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (10, 7)
+
+Turn 140:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 4)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (10, 7)
+
+Turn 141:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 4)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 142:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 3)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 143:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 3)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 144:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (7, 3)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 145:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 3)
+The position of avatar 1 is (7, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 146:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 3)
+The position of avatar 1 is (8, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 147:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 3)
+The position of avatar 1 is (8, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 148:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 3)
+The position of avatar 2 is (9, 7)
+
+Turn 149:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (9, 7)
+
+Turn 150:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (10, 7)
+
+Turn 151:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (10, 7)
+
+Turn 152:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (10, 7)
+
+Turn 153:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 2)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (10, 8)
+
+Turn 154:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 2)
+The position of avatar 2 is (10, 8)
+
+Turn 155:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (10, 8)
+
+Turn 156:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (10, 8)
+
+Turn 157:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (10, 8)
+
+Turn 158:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (10, 8)
+
+Turn 159:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (8, 1)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (11, 8)
+
+Turn 160:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 0)
+The position of avatar 1 is (8, 1)
+The position of avatar 2 is (11, 8)
+
+Turn 161:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (8, 0)
+The position of avatar 1 is (8, 0)
+The position of avatar 2 is (11, 8)
+
+Turn 162:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (8, 0)
+The position of avatar 1 is (8, 0)
+The position of avatar 2 is (11, 9)
+
+Turn 163:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (8, 0)
+The position of avatar 2 is (11, 9)
+
+Turn 164:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (11, 9)
+
+Turn 165:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (10, 9)
+
+Turn 166:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (10, 9)
+
+Turn 167:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (10, 9)
+
+Turn 168:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (7, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (9, 9)
+
+Turn 169:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 0)
+The position of avatar 1 is (7, 0)
+The position of avatar 2 is (9, 9)
+
+Turn 170:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 0)
+The position of avatar 1 is (6, 0)
+The position of avatar 2 is (9, 9)
+
+Turn 171:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 0)
+The position of avatar 1 is (6, 0)
+The position of avatar 2 is (9, 8)
+
+Turn 172:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 1)
+The position of avatar 1 is (6, 0)
+The position of avatar 2 is (9, 8)
+
+Turn 173:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 1)
+The position of avatar 1 is (6, 1)
+The position of avatar 2 is (9, 8)
+
+Turn 174:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 1)
+The position of avatar 1 is (6, 1)
+The position of avatar 2 is (8, 8)
+
+Turn 175:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 1)
+The position of avatar 2 is (8, 8)
+
+Turn 176:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 8)
+
+Turn 177:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 7)
+
+Turn 178:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 7)
+
+Turn 179:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 7)
+
+Turn 180:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 181:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (6, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 182:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 183:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 184:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 185:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (8, 6)
+
+Turn 186:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (9, 6)
+
+Turn 187:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (9, 6)
+
+Turn 188:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (9, 6)
+
+Turn 189:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (9, 5)
+
+Turn 190:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (5, 2)
+The position of avatar 2 is (9, 5)
+
+Turn 191:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (9, 5)
+
+Turn 192:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (8, 5)
+
+Turn 193:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (8, 5)
+
+Turn 194:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (8, 5)
+
+Turn 195:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (7, 5)
+
+Turn 196:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (7, 5)
+
+Turn 197:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (7, 5)
+
+Turn 198:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 199:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (4, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 200:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 201:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 202:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 203:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 6)
+
+Turn 204:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 2)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 7)
+
+Turn 205:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 2)
+The position of avatar 2 is (7, 7)
+
+Turn 206:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (7, 7)
+
+Turn 207:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 7)
+
+Turn 208:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 7)
+
+Turn 209:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 7)
+
+Turn 210:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 8)
+
+Turn 211:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 8)
+
+Turn 212:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (6, 8)
+
+Turn 213:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (5, 8)
+
+Turn 214:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (2, 1)
+The position of avatar 1 is (3, 1)
+The position of avatar 2 is (5, 8)
+
+Turn 215:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (2, 1)
+The position of avatar 1 is (2, 1)
+The position of avatar 2 is (5, 8)
+
+Turn 216:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (2, 1)
+The position of avatar 1 is (2, 1)
+The position of avatar 2 is (4, 8)
+
+Turn 217:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 1)
+The position of avatar 2 is (4, 8)
+
+Turn 218:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 8)
+
+Turn 219:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 7)
+
+Turn 220:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 7)
+
+Turn 221:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 7)
+
+Turn 222:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (2, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 6)
+
+Turn 223:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (2, 2)
+The position of avatar 2 is (4, 6)
+
+Turn 224:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (4, 6)
+
+Turn 225:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 6)
+
+Turn 226:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 6)
+
+Turn 227:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 6)
+
+Turn 228:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 7)
+
+Turn 229:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 7)
+
+Turn 230:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 7)
+
+Turn 231:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 8)
+
+Turn 232:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (0, 2)
+The position of avatar 1 is (1, 2)
+The position of avatar 2 is (3, 8)
+
+Turn 233:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (0, 2)
+The position of avatar 1 is (0, 2)
+The position of avatar 2 is (3, 8)
+
+Turn 234:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 2)
+The position of avatar 1 is (0, 2)
+The position of avatar 2 is (3, 9)
+
+Turn 235:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 3)
+The position of avatar 1 is (0, 2)
+The position of avatar 2 is (3, 9)
+
+Turn 236:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 3)
+The position of avatar 1 is (0, 3)
+The position of avatar 2 is (3, 9)
+
+Turn 237:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (0, 3)
+The position of avatar 1 is (0, 3)
+The position of avatar 2 is (4, 9)
+
+Turn 238:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 3)
+The position of avatar 2 is (4, 9)
+
+Turn 239:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (4, 9)
+
+Turn 240:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 241:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 242:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 243:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (0, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 244:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (0, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 245:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 9)
+
+Turn 246:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 247:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 248:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 249:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 250:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 251:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 252:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (1, 4)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 253:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 3)
+The position of avatar 1 is (1, 4)
+The position of avatar 2 is (3, 8)
+
+Turn 254:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 3)
+The position of avatar 1 is (1, 3)
+The position of avatar 2 is (3, 8)
+
+Turn 255:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (1, 3)
+The position of avatar 1 is (1, 3)
+The position of avatar 2 is (3, 7)
+
+Turn 256:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (2, 3)
+The position of avatar 1 is (1, 3)
+The position of avatar 2 is (3, 7)
+
+Turn 257:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (2, 3)
+The position of avatar 1 is (2, 3)
+The position of avatar 2 is (3, 7)
+
+Turn 258:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (2, 3)
+The position of avatar 1 is (2, 3)
+The position of avatar 2 is (3, 7)
+
+Turn 259:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 3)
+The position of avatar 2 is (3, 7)
+
+Turn 260:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 7)
+
+Turn 261:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 7)
+
+Turn 262:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 7)
+
+Turn 263:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 7)
+
+Turn 264:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (2, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 265:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (2, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 266:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 267:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 268:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 269:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (3, 6)
+
+Turn 270:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (4, 6)
+
+Turn 271:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (4, 6)
+
+Turn 272:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (4, 6)
+
+Turn 273:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 4)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (4, 7)
+
+Turn 274:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 3)
+The position of avatar 1 is (3, 4)
+The position of avatar 2 is (4, 7)
+
+Turn 275:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (3, 3)
+The position of avatar 1 is (3, 3)
+The position of avatar 2 is (4, 7)
+
+Turn 276:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (3, 3)
+The position of avatar 1 is (3, 3)
+The position of avatar 2 is (4, 8)
+
+Turn 277:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 3)
+The position of avatar 1 is (3, 3)
+The position of avatar 2 is (4, 8)
+
+Turn 278:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 3)
+The position of avatar 1 is (4, 3)
+The position of avatar 2 is (4, 8)
+
+Turn 279:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 3)
+The position of avatar 1 is (4, 3)
+The position of avatar 2 is (5, 8)
+
+Turn 280:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 3)
+The position of avatar 2 is (5, 8)
+
+Turn 281:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (5, 8)
+
+Turn 282:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (6, 8)
+
+Turn 283:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (6, 8)
+
+Turn 284:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (6, 8)
+
+Turn 285:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (4, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (6, 7)
+
+Turn 286:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (4, 4)
+The position of avatar 2 is (6, 7)
+
+Turn 287:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (6, 7)
+
+Turn 288:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (7, 7)
+
+Turn 289:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (7, 7)
+
+Turn 290:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (7, 7)
+
+Turn 291:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 4)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (7, 7)
+
+Turn 292:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 3)
+The position of avatar 1 is (5, 4)
+The position of avatar 2 is (7, 7)
+
+Turn 293:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 3)
+The position of avatar 1 is (5, 3)
+The position of avatar 2 is (7, 7)
+
+Turn 294:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 3)
+The position of avatar 1 is (5, 3)
+The position of avatar 2 is (7, 6)
+
+Turn 295:
+It is Avatar 0's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 3)
+The position of avatar 1 is (5, 3)
+The position of avatar 2 is (7, 6)
+
+Turn 296:
+It is Avatar 1's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 3)
+The position of avatar 1 is (6, 3)
+The position of avatar 2 is (7, 6)
+
+Turn 297:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (6, 3)
+The position of avatar 1 is (6, 3)
+The position of avatar 2 is (7, 5)
+
+Turn 298:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 4)
+The position of avatar 1 is (6, 3)
+The position of avatar 2 is (7, 5)
+
+Turn 299:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 4)
+The position of avatar 1 is (6, 4)
+The position of avatar 2 is (7, 5)
+
+Turn 300:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 4)
+The position of avatar 1 is (6, 4)
+The position of avatar 2 is (8, 5)
+
+Turn 301:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 4)
+The position of avatar 2 is (8, 5)
+
+Turn 302:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (8, 5)
+
+Turn 303:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (9, 5)
+
+Turn 304:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (9, 5)
+
+Turn 305:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (9, 5)
+
+Turn 306:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 5)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (9, 6)
+
+Turn 307:
+It is Avatar 0's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 6)
+The position of avatar 1 is (6, 5)
+The position of avatar 2 is (9, 6)
+
+Turn 308:
+It is Avatar 1's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (6, 6)
+The position of avatar 1 is (6, 6)
+The position of avatar 2 is (9, 6)
+
+Turn 309:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (6, 6)
+The position of avatar 1 is (6, 6)
+The position of avatar 2 is (8, 6)
+
+Turn 310:
+It is Avatar 0's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 6)
+The position of avatar 1 is (6, 6)
+The position of avatar 2 is (8, 6)
+
+Turn 311:
+It is Avatar 1's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 6)
+The position of avatar 1 is (5, 6)
+The position of avatar 2 is (8, 6)
+
+Turn 312:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 6)
+The position of avatar 1 is (5, 6)
+The position of avatar 2 is (8, 7)
+
+Turn 313:
+It is Avatar 0's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 6)
+The position of avatar 2 is (8, 7)
+
+Turn 314:
+It is Avatar 1's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 7)
+
+Turn 315:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 8)
+
+Turn 316:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 8)
+
+Turn 317:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 8)
+
+Turn 318:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 8)
+
+Turn 319:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 8)
+
+Turn 320:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 8)
+
+Turn 321:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 9)
+
+Turn 322:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 9)
+
+Turn 323:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 9)
+
+Turn 324:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 9)
+
+Turn 325:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 9)
+
+Turn 326:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 9)
+
+Turn 327:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 9)
+
+Turn 328:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 9)
+
+Turn 329:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 9)
+
+Turn 330:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 8)
+
+Turn 331:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 8)
+
+Turn 332:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (11, 8)
+
+Turn 333:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 8)
+
+Turn 334:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 8)
+
+Turn 335:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 8)
+
+Turn 336:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 7)
+
+Turn 337:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 7)
+
+Turn 338:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 7)
+
+Turn 339:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 6)
+
+Turn 340:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 6)
+
+Turn 341:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 6)
+
+Turn 342:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 5)
+
+Turn 343:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 5)
+
+Turn 344:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 5)
+
+Turn 345:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 4)
+
+Turn 346:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 4)
+
+Turn 347:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (10, 4)
+
+Turn 348:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 4)
+
+Turn 349:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 4)
+
+Turn 350:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (9, 4)
+
+Turn 351:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 4)
+
+Turn 352:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 4)
+
+Turn 353:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 4)
+
+Turn 354:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 4)
+
+Turn 355:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 4)
+
+Turn 356:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 4)
+
+Turn 357:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 3)
+
+Turn 358:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 3)
+
+Turn 359:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 3)
+
+Turn 360:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 3)
+
+Turn 361:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 3)
+
+Turn 362:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 3)
+
+Turn 363:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 2)
+
+Turn 364:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 2)
+
+Turn 365:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 2)
+
+Turn 366:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 367:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 368:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 369:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 370:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 371:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 1)
+
+Turn 372:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 0)
+
+Turn 373:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 0)
+
+Turn 374:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (8, 0)
+
+Turn 375:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 0)
+
+Turn 376:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 0)
+
+Turn 377:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (7, 0)
+
+Turn 378:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 0)
+
+Turn 379:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 0)
+
+Turn 380:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 0)
+
+Turn 381:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 1)
+
+Turn 382:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 1)
+
+Turn 383:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 1)
+
+Turn 384:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 2)
+
+Turn 385:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 2)
+
+Turn 386:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 2)
+
+Turn 387:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 2)
+
+Turn 388:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 2)
+
+Turn 389:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 2)
+
+Turn 390:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 2)
+
+Turn 391:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 2)
+
+Turn 392:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 2)
+
+Turn 393:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 2)
+
+Turn 394:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 2)
+
+Turn 395:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 2)
+
+Turn 396:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 1)
+
+Turn 397:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 1)
+
+Turn 398:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 1)
+
+Turn 399:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 1)
+
+Turn 400:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 1)
+
+Turn 401:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 1)
+
+Turn 402:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 2)
+
+Turn 403:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 2)
+
+Turn 404:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 2)
+
+Turn 405:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 2)
+
+Turn 406:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 2)
+
+Turn 407:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 2)
+
+Turn 408:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 2)
+
+Turn 409:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 2)
+
+Turn 410:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 2)
+
+Turn 411:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 3)
+
+Turn 412:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 3)
+
+Turn 413:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 3)
+
+Turn 414:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 4)
+
+Turn 415:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 4)
+
+Turn 416:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (0, 4)
+
+Turn 417:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 4)
+
+Turn 418:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 4)
+
+Turn 419:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 4)
+
+Turn 420:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 3)
+
+Turn 421:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 3)
+
+Turn 422:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (1, 3)
+
+Turn 423:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 3)
+
+Turn 424:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 3)
+
+Turn 425:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 3)
+
+Turn 426:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 4)
+
+Turn 427:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 4)
+
+Turn 428:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (2, 4)
+
+Turn 429:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 4)
+
+Turn 430:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 4)
+
+Turn 431:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 4)
+
+Turn 432:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 3)
+
+Turn 433:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 3)
+
+Turn 434:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (3, 3)
+
+Turn 435:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 3)
+
+Turn 436:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 3)
+
+Turn 437:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 3)
+
+Turn 438:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 4)
+
+Turn 439:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 4)
+
+Turn 440:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (4, 4)
+
+Turn 441:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 4)
+
+Turn 442:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 4)
+
+Turn 443:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 4)
+
+Turn 444:
+It is Avatar 2's turn, attempted move: 1
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 3)
+
+Turn 445:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 3)
+
+Turn 446:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 3)
+
+Turn 447:
+It is Avatar 2's turn, attempted move: 3
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 3)
+
+Turn 448:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 3)
+
+Turn 449:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 3)
+
+Turn 450:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 4)
+
+Turn 451:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 4)
+
+Turn 452:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 4)
+
+Turn 453:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 5)
+
+Turn 454:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 5)
+
+Turn 455:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 5)
+
+Turn 456:
+It is Avatar 2's turn, attempted move: 2
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 6)
+
+Turn 457:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 6)
+
+Turn 458:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (6, 6)
+
+Turn 459:
+It is Avatar 2's turn, attempted move: 0
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 6)
+
+Turn 460:
+It is Avatar 0's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 6)
+
+Turn 461:
+It is Avatar 1's turn, attempted move: 8
+After the move, the new positions are:
+The position of avatar 0 is (5, 5)
+The position of avatar 1 is (5, 5)
+The position of avatar 2 is (5, 6)
+
+Turn 462:
+It is Avatar 2's turn, attempted move: 1
+Maze completed in 462 moves

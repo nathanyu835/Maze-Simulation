@@ -91,27 +91,13 @@ void createPerimeter(int height, int width)
 void freeMaze()
 {
     for(int i = 0; i < mazeWidth; i++)
-        for(int j = 0; j < mazeHeight; j++)
+        for(int j = 0; j < mazeHeight; j++) {
             free(Amazing[i][j].visited);
+        }
     for (int i = 0; i < mazeWidth; i++)
         free(Amazing[i]);
-    free(Amazing);
+    //free(Amazing);
 }
-
-/* This method acquires a centroid based on the intial locations of each avatar */
-/*void getRendezvous(AvatarList *avatar)
-{
-    int xSum = 0, ySum = 0;
-
-    for(int i = 0; i < nAvatars; i++)
-    {
-        xSum += avatar[i]->pos->x;
-        ySum += avatar[i]->pos->y;
-    }
-
-    rendezvous->x = xSum/nAvatars;
-    rendezvous->y = ySum/nAvatars;
-}*/
 
 /* This method  */
 void visitSquare(XYPos *currPos, int i)

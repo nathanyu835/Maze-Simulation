@@ -77,6 +77,7 @@ void AMStartup()
 	AM_INIT_msg->init.Difficulty = htonl(difficulty);
 
 	send(sockfd, AM_INIT_msg, sizeof(AM_Message), 0);
+	free(AM_INIT_msg);
 
 	//Get init response from the server
 	AM_Message *AM_INIT_resp = (AM_Message *) calloc(1, sizeof(AM_Message));
@@ -89,6 +90,7 @@ void AMStartup()
 	mazeHeight = ntohl(AM_INIT_resp->init_ok.MazeHeight);
 	mazeWidth = ntohl(AM_INIT_resp->init_ok.MazeWidth);
 	mazePort = ntohl(AM_INIT_resp->init_ok.MazePort);
+	free(AM_INIT_resp);
 
 	//Create maze
 	initializeMaze(mazeHeight, mazeWidth, nAvatars);
@@ -100,21 +102,21 @@ void AMStartup()
 int main(int argc, char **argv)
 {
 	if (argc != 4)
-    {
-        printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
-        exit(1);
-    }
+    	{
+        	printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
+       		exit(1);
+    	}
 
-    nAvatars = atoi(argv[1]);
-    difficulty = atoi(argv[2]);
-    hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
-    strcpy(hostname, argv[3]);
+    	nAvatars = atoi(argv[1]);
+    	difficulty = atoi(argv[2]);
+    	hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
+    	strcpy(hostname, argv[3]);
 
 	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
 	rendezvous->x = -1;
 	rendezvous->y = -1;
 	
-    avatars = (Avatar **)calloc(nAvatars, sizeof(Avatar));
-    AMStartup();
+    	avatars = (Avatar **)calloc(nAvatars, sizeof(Avatar));
+    	AMStartup();
 	return 0;
 }

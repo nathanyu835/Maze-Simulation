@@ -40,7 +40,7 @@
 // ---------------- Structures/Types
 
 // ---------------- Private variables
-AM_Message *terminated;
+uint32_t terminated;
 FILE *testLog;
 int moveCount;
 
@@ -121,24 +121,22 @@ void* newAvatar(void *newAvatar)
 				rendezvous->y = ySum/nAvatars;
 				fprintf(testLog, "The target position is (%d, %d)\n\n", rendezvous->x, rendezvous->y);
 			}
+			//Update new x and y values for this avatar and mark maze
 			int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 			int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 			avatar->pos->x = newX;
 			avatar->pos->y = newY;
 			visitSquare(avatar->pos, avatar->AvatarId);
 			
-            Amazing[newX][newY].whoLast = avatar->AvatarId;
-            //Amazing[newX][newY].lastDir = avatar->face;
+            		Amazing[newX][newY].whoLast = avatar->AvatarId;
 
-            firstMove = 0;
-			/***********************************
-			Put algorithm here in place of next line
-			*************************************/
+            		firstMove = 0;
 			//Print initial conditions
 			for(int i = 0; i < nAvatars; i++) {
 				fprintf(testLog, "The initial position of avatar %d is (%d, %d)\n", i, 
 					ntohl(response->avatar_turn.Pos[i].x), ntohl(response->avatar_turn.Pos[i].y));
 			}
+			//get the next move using the heuristic
 			int dir = getMove(avatar->pos, avatar->AvatarId);
 			fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
@@ -156,15 +154,15 @@ void* newAvatar(void *newAvatar)
 		int respType = ntohl(response->type);
 		if(respType == AM_AVATAR_TURN) {
 			if(justMoved == 1) {
+				//update avatar information with new square and update the maze as needed
 				justMoved = 0;
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				
-                Amazing[newX][newY].whoLast = avatar->AvatarId;
-                Amazing[newX][newY].lastDir = avatar->face;
+                		Amazing[newX][newY].whoLast = avatar->AvatarId;
+                		Amazing[newX][newY].lastDir = avatar->face;
 
-                if (avatar->pos->x == newX && avatar->pos->y == newY) 
-				{
+                		if (avatar->pos->x == newX && avatar->pos->y == newY) {
 					addWall(avatar->pos, avatar->face);
 				} else {
 					avatar->pos->x = newX;
@@ -173,6 +171,7 @@ void* newAvatar(void *newAvatar)
 				}
 			}
 			if (firstMove == 1) {
+				//Make sure not to update any walls before a move has been made
 				int newX = ntohl(response->avatar_turn.Pos[avatar->AvatarId].x);
 				int newY = ntohl(response->avatar_turn.Pos[avatar->AvatarId].y);
 				avatar->pos->x = newX;
@@ -181,15 +180,11 @@ void* newAvatar(void *newAvatar)
 				firstMove = 0;
 			}
 			if(ntohl(response->avatar_turn.TurnId) == avatar->AvatarId) {
-				usleep(10000); //give qanother avatar time to update the maze
+				usleep(1000); //give another avatar time to update the maze
 				moveCount++;
 				justMoved = 1;
-				/***********************************
-				Put algorithm here in place of next line
-				*************************************/
+				//Calculate optimal direction from heuristic
 				int dir = getMove(avatar->pos, avatar->AvatarId); 
-				//if move is not made, addWalls and call getDirection again
-				//if move IS made, update visited
 				//Print info to logfile
 				fprintf(testLog, "After the move, the new positions are:\n");
 				for(int i = 0; i < nAvatars; i++) {
@@ -200,50 +195,42 @@ void* newAvatar(void *newAvatar)
 				fprintf(testLog, "\nTurn %d:\nIt is Avatar %d's turn, attempted move: %d\n", 
 						moveCount, avatar->AvatarId, dir);
 				//sleep to allow time for print statments
-				usleep(10000);
+				usleep(1000);
 				move->avatar_move.Direction = htonl(dir);
 
-                avatar->face = dir;
+				//send the move to the server and update maze info
+                		avatar->face = dir;
 				Amazing[avatar->pos->x][avatar->pos->y].lastDir = dir;
-                send(sockfd, move, sizeof(AM_Message), 0);
+                		send(sockfd, move, sizeof(AM_Message), 0);
 
-                drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
+                		drawMaze(Amazing, avatars, mazeHeight, mazeWidth);
 			}
-			usleep(10000); //allow time for print statements to print in the correct order
+			usleep(1000); //allow time for print statements to print in the correct order
 		} else {
 			if(respType == AM_MAZE_SOLVED){ 
 				sleep(1); // give a chance for the other avatars to finish any remaining print statements
-                terminated = response;
+                		free(move);
+                		free(response);
+                		terminated = respType;
 				break;
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
-                terminated = response;
+				free(move);
+                		free(response);
+                		terminated = respType;
 				sleep(100); //Do not attempt to make another move
 			}
 			//Otherwise wait and continue
-			usleep(100000);
+			usleep(10000);
 		}
 
 	}
 	return NULL;
 }
 
-/*
-int chooseDir(Avatar *avatar, XYPos *rendezvous) {
-	int dir = rand() % 4;
-	int ax = avatar->pos->x;
-	int ay = avatar->pos->y;
-	int rx = rendezvous->x;
-	int ry = rendezvous->y;
-	if(ax == rx && ay == ry) {
-		return M_NULL_MOVE;
-	}
-	return dir;
-}*/
-
 void AMClient()
 {
-	terminated = NULL;
+	terminated = 0;
 	moveCount = 0;
 
 	char logPath[200];
@@ -277,11 +264,11 @@ void AMClient()
 		usleep(10000);
 		curr_id++;
 	}
-	while (terminated == NULL) {
+	while (terminated == 0) {
 		usleep(10000);
 	}
 	//The maze has terminated, check the last message for exit status
-	switch (ntohl(terminated->type)) {
+	switch (terminated) {
 		case AM_MAZE_SOLVED:
 			sleep(1); //Make sure everything has been written to the logfile before exitting
 			fprintf(testLog, "Maze completed in %d moves\n", moveCount);
@@ -308,6 +295,12 @@ void AMClient()
 			fprintf(testLog, "Disk quota has been reached. Terminating program\n");
 			break;
 	}
+	for(int i = 0; i < nAvatars; i++) {
+		free(avatars[i]->pos);
+		free(avatars[i]);
+	}
+	free(avatars);
+	freeMaze();
 	fclose(testLog);
 }
 
@@ -337,6 +330,7 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         palette[0], palette[1], palette[2], palette[3], palette[4], palette[5], palette[6],
         palette[7], palette[8], palette[0], palette[1], palette[2], palette[3], palette[10]);
 
+    char arrow[7];
     // Print maze! Black border and colorful avatars and paths    
     for (int height = 0; height <= mazeheight + 1; height++) {
         for (int width = 0; width <= mazewidth + 1; width++) {
@@ -381,32 +375,30 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
             }
 
             Avatar *currAv = avatars[currNode->whoLast];
-            char *arrow = calloc(7, sizeof(char));
 
             // Print avatar if it is in this node
             if(currAv->pos->x == width-1 && currAv->pos->y == height-1){
-                arrow = "\u2606";
+                strcpy(arrow,"\u2606");
             }
 
             // Print colored paths of each avatar with arrows
             else if (currNode->lastDir == 0) { // West
-                arrow = "\u2190";
+                strcpy(arrow,"\u2190");
             }
             else if (currNode->lastDir == 1) { // North
-                arrow = "\u2191";
+                strcpy(arrow,"\u2191");
             }
             else if (currNode->lastDir == 2) { // South
-                arrow = "\u2193";
+                strcpy(arrow,"\u2193");
             }
             else if (currNode->lastDir == 3) { // East
-                arrow = "\u2192";
+                strcpy(arrow,"\u2192");
             }
             else {                             // Resting
-                arrow = "-";
+                strcpy(arrow,"-");
             }
 
             printf("%s%s ", palette[currNode->whoLast], arrow);
-            //free(arrow);
         }
         printf("\n%s", palette[11]);
     }
