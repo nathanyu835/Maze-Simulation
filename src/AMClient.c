@@ -217,11 +217,7 @@ void* newAvatar(void *newAvatar)
 				break;
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
-<<<<<<< HEAD
                 terminated = response;
-=======
-				terminated = response;
->>>>>>> parent of d065916... freed maze
 				sleep(100); //Do not attempt to make another move
 			}
 			//Otherwise wait and continue
@@ -414,9 +410,4 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         }
         printf("\n%s", palette[11]);
     }
-<<<<<<< HEAD
-=======
-    fflush(stdout);
-    usleep(200000);
->>>>>>> parent of d065916... freed maze
 }
