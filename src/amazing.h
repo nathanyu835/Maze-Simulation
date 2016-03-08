@@ -165,8 +165,8 @@ Avatar **avatars;
 char *hostname;
 XYPos *rendezvous;
 int mazePort;
-int width;
-int height;
+int mazeWidth;
+int mazeHeight;
 
 // ---------------- Prototypes/Macros
 int getMove(XYPos *curr, int i);
