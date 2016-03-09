@@ -69,20 +69,20 @@ void* newAvatar(void *newAvatar)
         	exit(2);
     	}
 
-    	avatar->fd = sockfd;
-    	//Setup socket
-    	memset(&servaddr, 0, sizeof(servaddr));
-    	servaddr.sin_family = AF_INET;
-     	servaddr.sin_addr.s_addr= inet_addr(hostname);
-     	servaddr.sin_port =  htons(mazePort); //convert to network order
+    avatar->fd = sockfd;
+	//Setup socket
+    memset(&servaddr, 0, sizeof(servaddr));
+	servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr= inet_addr(hostname);
+ 	servaddr.sin_port =  htons(mazePort); //convert to network order
 
-     	//Connection of the client to the socket 
-     	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr))<0) {
-        	perror("Problem in connecting to the server\n");
-        	exit(3);
-     	}
+    //Connection of the client to the socket 
+ 	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr))<0) {
+        perror("Problem in connecting to the server\n");
+    	exit(3);
+ 	}
 
-     	//Allocate send and free the ready message to the server
+    //Allocate send and free the ready message to the server
 	AM_Message *ready_msg = (AM_Message *) calloc(1, sizeof(AM_Message));
 	ready_msg->type = htonl(AM_AVATAR_READY);
 	ready_msg->avatar_ready.AvatarId = htonl(avatar->AvatarId);
@@ -212,7 +212,7 @@ void* newAvatar(void *newAvatar)
                 		free(move);
                 		free(response);
                 		terminated = respType;
-				break;
+                break;
 			}  else if ((respType | AM_AVATAR_OUT_OF_TURN | AM_UNEXPECTED_MSG_TYPE 
 						| AM_UNKNOWN_MSG_TYPE) != 0) {
 				free(move);
@@ -246,7 +246,7 @@ void AMClient()
 	fprintf(testLog, "Difficulty: %d\n\n", difficulty);
 
 	pthread_t avatarThreads[nAvatars];
-	//Create a new thread for each avatar passing it a new Avatar pointer
+	//Create a new thread for each avatar, passing it a new Avatar pointer
 	int curr_id = 0;
 	while(curr_id < nAvatars) {
 		Avatar *nextAvatar = (Avatar *) calloc(1, sizeof(Avatar));
@@ -273,6 +273,7 @@ void AMClient()
 		case AM_MAZE_SOLVED:
 			sleep(1); //Make sure everything has been written to the logfile before exitting
 			fprintf(testLog, "Maze completed in %d moves\n", moveCount);
+            printf("Success! Maze solved!\n");
             break;
 		case AM_NO_SUCH_AVATAR | AM_ERROR_MASK:
 			fprintf(testLog, "Invalid AvatarId. Terminating program\n");
@@ -311,19 +312,18 @@ void AMClient()
 void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
 
     // Palette of ANSI color codes
-    char* palette[12];
+    char* palette[11];
     palette[0]="\033[22;31m"; // red
-    palette[1]="\033[01;35m"; // orange
-    palette[2]="\033[22;33m"; // yellow
-    palette[3]="\033[22;32m"; // green
-    palette[4]="\033[22;34m"; // blue
-    palette[5]="\033[22;36m"; // cyan
-    palette[6]="\033[01;34m"; // light blue
-    palette[7]="\033[22;35m"; // magenta
-    palette[8]="\033[01;31m"; // light red
-    palette[9]="\033[01;32m"; // light green
-    palette[10]="\033[22;30m"; //black
-    palette[11]="\033[0m"; // normal
+    palette[1]="\033[1;93m";  // yellow
+    palette[2]="\033[22;32m"; // green
+    palette[3]="\033[22;34m"; // blue
+    palette[4]="\033[22;36m"; // cyan
+    palette[5]="\033[01;34m"; // light blue
+    palette[6]="\033[22;35m"; // magenta
+    palette[7]="\033[01;31m"; // light red
+    palette[8]="\033[01;32m"; // light green
+    palette[9]="\033[22;30m"; //black
+    palette[10]="\033[0m"; // normal
 
     // Clear screen and position cursor at 1,1
     printf("\033[2J\033[1;1H");
@@ -339,34 +339,40 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
         for (int width = 0; width <= mazewidth + 1; width++) {
             
             // Print border of the maze
+            // top left
             if (width == 0 && height == 0){
-                printf("%s\u256D", palette[10]);
+                printf("%s\u256D", palette[9]);
                 continue;
             }
+            // top right
             if (width == mazewidth + 1 && height == 0){
-                printf("%s\u2500\u256E", palette[10]);
+                printf("%s\u2500\u256E", palette[9]);
                 continue;
             }
+            // bottom left
             if (width == 0 && height == mazeheight + 1){
-                printf("%s\u2570\u2500", palette[10]);
+                printf("%s\u2570\u2500", palette[9]);
                 continue;
             }
+            // bottom right
             if (width == mazewidth + 1 && height == mazeheight + 1){
-                printf("%s\u256F ", palette[10]);
+                printf("%s\u256F ", palette[9]);
                 continue;
             }
+            // horizontal border
             if(width == 0 || width == mazewidth+1){
-                printf("%s\u2502 ", palette[10]);
+                printf("%s\u2502 ", palette[9]);
                 continue;
             }
+            // vertical border
             if(height == 0 || height == mazeheight+1){
-                printf("%s\u2500\u2500", palette[10]);
+                printf("%s\u2500\u2500", palette[9]);
                 continue;
             }
 
             // Print rendezvous point
             if(width-1==rendezvous->x && height-1==rendezvous->y){
-                printf("%s\u26B7 ", palette[9]);
+                printf("%s\u26B7 ", palette[8]);
                 continue;
             }
 
@@ -403,6 +409,6 @@ void drawMaze(MazeNode** maze, Avatar** avatars, int mazeheight, int mazewidth){
 
             printf("%s%s ", palette[currNode->whoLast], arrow);
         }
-        printf("\n%s", palette[11]);
+        printf("\n%s", palette[10]);
     }
 }

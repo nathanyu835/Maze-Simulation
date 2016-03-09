@@ -108,24 +108,31 @@ int main(int argc, char **argv)
 {
 	//Check args
 	if (argc != 4)
-    	{
-        	printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
-       		exit(1);
-    	}
+    {
+        printf("Usage: %s requires 3 arguments: [NUM_AVATARS] [DIFFICULTY] [HOSTNAME]\n", argv[0]);
+    	exit(1);
+    }    
 
-    	//Put args into global variables
-    	nAvatars = atoi(argv[1]);
-    	difficulty = atoi(argv[2]);
-    	hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
-    	strcpy(hostname, argv[3]);
+    //Check HOSTNAME validity
+    if(strcmp("129.170.214.115", argv[3])!=0)
+    {
+        printf("Invalid HOSTNAME! Hostname must refer to flume.cs.dartmouth.edu\n");
+        exit(1);
+    }
 
-    	//Allocate rendezvous
+    //Put args into global variables
+	nAvatars = atoi(argv[1]);
+    difficulty = atoi(argv[2]);
+	hostname = calloc(strlen(argv[3]) + 1, sizeof(char));
+    strcpy(hostname, argv[3]);
+
+    //Allocate rendezvous
 	rendezvous = (XYPos *) calloc (1, sizeof(XYPos));
 	rendezvous->x = -1;
 	rendezvous->y = -1;
 	
 	//Allocate avatars	
-    	avatars = (Avatar **)calloc(nAvatars, sizeof(Avatar));
-    	AMStartup();
+    avatars = (Avatar **)calloc(nAvatars, sizeof(Avatar));
+	AMStartup();
 	return 0;
 }

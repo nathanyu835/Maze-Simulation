@@ -156,7 +156,7 @@ int isProductive(XYPos *currPos, int i)
         if(Amazing[currPos->x][currPos->y].south == 0 && Amazing[currPos->x][currPos->y+1].visited[i] == 0)
             return M_SOUTH;
     }
-    if(changeY < 0)
+    if(changeY < 0) //Avatar needs to move north to reach rendezvous
     {
         if(Amazing[currPos->x][currPos->y].north == 0 && Amazing[currPos->x][currPos->y-1].visited[i] == 0)
             return M_NORTH;
@@ -166,7 +166,7 @@ int isProductive(XYPos *currPos, int i)
         if(Amazing[currPos->x][currPos->y].east == 0 && Amazing[currPos->x+1][currPos->y].visited[i] == 0)
             return M_EAST;    
     }
-    if(changeX < 0)
+    if(changeX < 0) //Avatar needs to move west to reach rendezvous
     {
         if(Amazing[currPos->x][currPos->y].west == 0 && Amazing[currPos->x-1][currPos->y].visited[i] == 0)
             return M_WEST;
@@ -230,6 +230,7 @@ int getMove(XYPos *currPos, int i)
 /*
  * getDirection - finds direction an avatar moved by taking
  *                its previous location and its current location
+ *
  * @start: XYPos indicating the starting position of the avatar
  * @end: XYPos indicating the ending position of the avatar
  *
