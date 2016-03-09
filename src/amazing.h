@@ -168,15 +168,98 @@ int mazeWidth;
 int mazeHeight;
 
 // ---------------- Prototypes/Macros
+
+/*
+ * getMove - Determines direction that avatar moves in by checking for a productive path.
+ *           If one doesn't exist, we know that every possible move have been visited once
+ *           by the avatar. We then arbitrarily choose a direction to traverse, and block off
+ *           the twice visited MazeNode by calling addDeadEnd.
+ *
+ * @currPos: XYPos of the given MazeNode
+ * @i: avatar id of the avatar currently moving
+ *
+ * Return: int direction 0, 1, 2, 3, 8 for avatar to move in
+ */
 int getMove(XYPos *curr, int i);
+
+/*
+ * visitSquare - increases counter on visits to the given MazeNode
+ * 
+ * @currPos: XYPos of the given MazeNode
+ * @i: avatar id of the avatar whose visits counter is being incremented
+ *
+ */
 void visitSquare(XYPos *currPos, int i);
+
+/*
+ * initializeMaze - creates and initializes the maze Amazing
+ *                  sets walls to 0, and and updates to 1 as they are discovered.
+ *                  creates a 'visited' list for each MazeNode that will keep track of
+ *                      how many times each avatar has visited a location in the maze.
+ *                  calls createPerimeter
+ *
+ * @height: height of the maze
+ * @width: width of the maze
+ * @nAvatars: number of avatars in the maze
+ *
+ */
 void initializeMaze(int height, int width, int nAvatars);
+
+/*
+ * createPerimeter - creates the walls on the edge of the maze
+ *                   using the height and width of the maze 
+ *
+ * @height: height of the maze
+ * @width: width of the maze
+ *
+ */
 void createPerimeter(int height, int width);
-void getRendezvous(Avatar *avatar);
+
+/* 
+ * getManhattan - calculates the MD (Manhattan Distance) between two nodes
+ * 
+ * @start: XYPos indicating the starting position of the avatar
+ * @end: XYPos indicating the ending position of the avatar
+ *
+ * Return: int representing MD between two MazeNodes
+ *
+ */
 int getManhattan(XYPos *start, XYPos *end);
+
+/*
+ * getDirection - finds direction an avatar moved by taking
+ *                its previous location and its current location
+ *
+ * @start: XYPos indicating the starting position of the avatar
+ * @end: XYPos indicating the ending position of the avatar
+ *
+ * Return: int direction that the avatar has just moved in
+ *
+ */
 int getDirection(XYPos *start, XYPos *end);
+
+/*
+ * addDeadEnd - adds a one-way wall for MazeNodes that are twice visited
+ *
+ * @pos: XYPos that holds position of the given MazeNode
+ * @face: direction that the current avatar is facing
+ *
+ */
 void addDeadEnd(XYPos *pos, int face);
+
+/*
+ * addWall - updates the Amazing maze by adding new walls into the maze
+ *
+ * @pos: XYPos of MazeNode containing the current wall
+ * @face: int direction faced by the current avatar
+ *
+ */
 void addWall(XYPos *pos, int face);
+
+/* 
+ * freeMaze - frees all visited lists in MazeNodes, MazeNodes and the Amazing maze
+ *
+ */
 void freeMaze();
 
 
